@@ -34,27 +34,46 @@ export interface SemanticHit {
   score: number
 }
 
-// null = семантика недоступна (нет векторов/ключа/сети) → вызывающий падает на substring
+import { catalog } from './store'
+
+// null = семантика недоступна (нет ключей/сети) → вызывающий падает на substring.
+// Векторный режим (vectors.json + embed-ключ) приоритетен; без него — LLM-ранжирование через Claude.
 export async function semanticSearch(query: string): Promise<SemanticHit[] | null> {
   const vectors = await loadVectors()
-  if (!vectors) return null
-
   const ctl = new AbortController()
-  const timer = setTimeout(() => ctl.abort(), 4000)
+  const timer = setTimeout(() => ctl.abort(), vectors ? 4000 : 8000)
   try {
+    if (vectors) {
+      const r = await fetch('/api/search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: ctl.signal,
+        body: JSON.stringify({ query, model: vectors.model }),
+      })
+      if (r.ok) {
+        const { v } = await r.json()
+        const scored = vectors.items
+          .map(({ id, v: doc }) => ({ id, score: cosine(v, doc) }))
+          .sort((a, b) => b.score - a.score)
+        const top = scored[0]?.score ?? 0
+        return scored.filter((s) => s.score >= Math.max(0.3, top * 0.86)).slice(0, 12)
+      }
+    }
+    // LLM-rank fallback: компактный каталог + запрос → ранжированные id
     const r = await fetch('/api/search', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       signal: ctl.signal,
-      body: JSON.stringify({ query, model: vectors.model }),
+      body: JSON.stringify({
+        query,
+        mode: 'llm-rank',
+        items: catalog.map((p) => ({ id: p.id, title: p.title, category: p.category })),
+      }),
     })
     if (!r.ok) return null
-    const { v } = await r.json()
-    const scored = vectors.items
-      .map(({ id, v: doc }) => ({ id, score: cosine(v, doc) }))
-      .sort((a, b) => b.score - a.score)
-    const top = scored[0]?.score ?? 0
-    return scored.filter((s) => s.score >= Math.max(0.3, top * 0.86)).slice(0, 12)
+    const { ids } = (await r.json()) as { ids: string[] }
+    if (!Array.isArray(ids) || ids.length === 0) return []
+    return ids.map((id, i) => ({ id, score: 1 - i / ids.length }))
   } catch {
     return null
   } finally {
