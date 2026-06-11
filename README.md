@@ -1,73 +1,100 @@
-# React + TypeScript + Vite
+# Birge — покупаем вместе, платим меньше
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Живое демо:** https://hackathon-birge.vercel.app *(откройте на телефоне)*
 
-Currently, two official plugins are available:
+MVP платформы коллективных покупок с глобальных маркетплейсов для Казахстана —
+с персонализированными рекомендациями и концепцией eSIM-идентификации.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+<p align="center">
+  <img src="pitch/final-feed-prod.jpeg" width="260" alt="Лента" />
+  <img src="pitch/v2-product.jpeg" width="260" alt="Карточка товара" />
+  <img src="pitch/05-joined.jpeg" width="260" alt="Группа собрана" />
+</p>
 
-## React Compiler
+## Идея
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Товар на глобальном маркетплейсе стоит X — до Казахстана он доезжает за 1.5–2X:
+розничная наценка, поштучная доставка, серые посредники-«байеры» в Instagram.
+Оптовая цена на 30–40% ниже розницы, но опт недоступен одному человеку.
 
-## Expanding the ESLint configuration
+**Birge объединяет покупателей в группы:** товар при индивидуальной покупке стоит
+дороже, при коллективной — дешевле. Группа из 10 человек получает первый оптовый
+тир, из 25 — второй. Деньги замораживаются (холд) и списываются только когда группа
+собралась; не собралась к дедлайну — автоматический возврат. Pinduoduo построил
+на этой механике компанию в $100B+ — мы локализуем её для Центральной Азии:
+тенге, русский и казахский языки, карго-консолидация по городам.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Роль SIM/eSIM** — слой безопасной идентификации. Групповые скидки ломаются ботами
+и мультиаккаунтами (1 человек = 10 фейковых участников = фейковый опт). eSIM-привязка
+делает «1 устройство = 1 реальный участник», а вход работает без SMS-кодов — оператор
+подтверждает абонента на сетевом уровне (GSMA Open Gateway, Number Verification API).
+Подробный разбор телеком-слоя: [`docs/ESIM.md`](docs/ESIM.md).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Что работает в MVP
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Полный пользовательский путь:** регистрация с eSIM-верификацией (концепт по ТЗ) →
+  профиль (город/бюджет/возраст) → интересы → персональная лента → карточка →
+  присоединение к группе → «Мои группы».
+- **Групповая механика с экономикой:** оптовые тиры цен, прогресс и счётчик участников,
+  дедлайн с живым таймером, холд/авторефанд, состояние «группа не собралась»,
+  лимит вступлений.
+- **Realtime между устройствами:** состояние групп живёт в Postgres (Supabase),
+  вступления синхронизируются на все открытые устройства мгновенно. Отсканировавший
+  QR гость попадает прямо на карточку и вступает без регистрации (гостевой режим).
+- **Объяснимые рекомендации:** скоринг по интересам, бюджету, городу и заполненности
+  групп — каждая карточка показывает, *почему* она в ленте.
+- **Живой ИИ-слой** (Claude Opus, structured outputs, цепочка фолбэков до Gemini):
+  - *Подборка дня* — именная подборка с человеческим объяснением пользы;
+  - *Семантический поиск* — «подарок девушке до 20 тысяч» находит сумки и косметику
+    в бюджете, бюджет извлекается моделью и фильтруется детерминированно;
+  - *Прогноз сбора группы* — вероятность и срок.
+- **Локализация:** русский + қазақша (переключение в один тап), цены в тенге,
+  казахстанские города.
+- Каталог (81 товар, имитация Amazon/AliExpress/Temu/Taobao) и все изображения —
+  self-hosted: демо не зависит от внешних CDN и переживает плохой Wi-Fi.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Стек и архитектура
+
+```
+React + TypeScript + Vite (mobile-first PWA: manifest + service worker)
+        │
+        ├── Supabase  — Postgres (состояние групп) + Realtime (postgres_changes)
+        ├── Vercel    — хостинг + serverless functions
+        │     ├── /api/pick    — LLM-подборка (Claude Opus 4.8 → Gemini 2.5 Flash → локальный фолбэк)
+        │     └── /api/search  — поиск: эмбеддинги (Voyage/Gemini, прекомпьют каталога)
+        │                         или LLM-ранжирование через Claude
+        └── eSIM identity layer (концепт) — прод-путь: GSMA Open Gateway / CAMARA
+              (Number Verification, SIM Swap, KYC) — см. docs/ESIM.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Масштабирование поиска посчитано: 81 SKU — косинус в браузере; до ~100k — pgvector
+на Supabase; бесплатного лимита эмбеддингов хватает на ~3 млн карточек.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Запуск локально
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev          # http://localhost:5173 — всё работает без ключей (ИИ в фолбэке)
+
+# Полный ИИ-слой (опционально):
+# в Vercel/.env: ANTHROPIC_API_KEY (подборка+поиск) и/или GEMINI_API_KEY, VOYAGE_API_KEY
+node scripts/embed-catalog.mjs   # прекомпьют векторов каталога (нужен Voyage/Gemini ключ)
 ```
+
+## Структура
+
+```
+src/            приложение (экраны, стор, скоринг, realtime, i18n)
+api/            serverless: pick.ts (подборка), search.ts (поиск)
+scripts/        генерация каталога, эмбеддинги, тест realtime
+docs/ESIM.md    телеком-слой: какие данные даёт оператор и как питают рекомендации
+pitch/          питч, сценарий демо, аудит жюри, скриншоты
+```
+
+## Дальнейшее развитие
+
+Уровень 1 (этот MVP) — AI-driven платформа коллективных покупок с локализованным
+доступом к глобальным маркетплейсам. Уровень 2 — secure commerce ecosystem на
+eSIM-идентификации: партнёрство с оператором (анти-фрод, Carrier Billing,
+подтверждённые сигналы для персонализации), карго-консолидация по городам,
+расширение на УЗ/КР. Роадмап и ответы на вопросы — в [`pitch/PITCH.md`](pitch/PITCH.md).
