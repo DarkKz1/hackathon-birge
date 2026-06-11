@@ -57,7 +57,8 @@ function QrOverlay({ url, title, onClose }: { url: string; title: string; onClos
 export default function ProductDetail() {
   const { id } = useParams()
   const nav = useNavigate()
-  const { profile, membersOf, groupOf, joinGroup, toast, tr } = useStore()
+  const { profile, membersOf, groupOf, joinGroup, simulateJoin, toast, tr } = useStore()
+  const taps = useMemo(() => ({ n: 0, t: 0 }), [])
   const p = catalog.find((x) => x.id === id)
   const [sheet, setSheet] = useState(false)
   const [confetti, setConfetti] = useState(false)
@@ -117,7 +118,20 @@ export default function ProductDetail() {
 
       {/* header image */}
       <div className="relative bg-white">
-        <img src={p.image} alt={p.title} className="w-full h-[290px] object-contain pt-10" />
+        <img
+          src={p.image}
+          alt={p.title}
+          className="w-full h-[290px] object-contain pt-10"
+          onClick={() => {
+            const now = Date.now()
+            taps.n = now - taps.t < 600 ? taps.n + 1 : 1
+            taps.t = now
+            if (taps.n === 3) {
+              taps.n = 0
+              simulateJoin(p)
+            }
+          }}
+        />
         <button
           onClick={() => nav(-1)}
           className="absolute top-[max(env(safe-area-inset-top),16px)] left-4 w-10 h-10 rounded-full bg-ink/85 text-paper flex items-center justify-center backdrop-blur active:scale-90 transition-transform"

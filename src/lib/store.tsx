@@ -4,6 +4,7 @@ import rawCatalog from '../data/catalog.json'
 import type { GroupState, Product, Profile } from './types'
 import { broadcastJoin, subscribeJoins } from './realtime'
 import { t, type Lang, type TKey } from './i18n'
+import { fakeName } from './format'
 
 export const catalog = rawCatalog as Product[]
 const byId = new Map(catalog.map((p) => [p.id, p]))
@@ -43,6 +44,7 @@ interface Store {
   groupOf: (p: Product) => GroupState
   membersOf: (p: Product) => number
   joinGroup: (p: Product) => void
+  simulateJoin: (p: Product) => void
   toasts: Toast[]
   toast: (text: string, emoji?: string) => void
   tr: (key: TKey) => string
@@ -85,6 +87,18 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     broadcastJoin({ productId: p.id, name: profile.name || 'Гость', city: profile.city })
   }
 
+  // demo fallback: triple-tap on product image fakes a remote participant joining
+  const simulateJoin = (p: Product) => {
+    const name = fakeName(Date.now() % 12)
+    const city = ['Алматы', 'Астана', 'Шымкент'][Date.now() % 3]
+    setGroups((g) => {
+      const cur = g[p.id] ?? { extraMembers: 0, joined: false, deadline: Date.now() + p.hoursLeft * 3_600_000 }
+      return { ...g, [p.id]: { ...cur, extraMembers: cur.extraMembers + 1 } }
+    })
+    toast(`${name} (${city}) ${t('toast_joined_other', profile.lang)}`, '⚡')
+    broadcastJoin({ productId: p.id, name, city })
+  }
+
   useEffect(() => {
     return subscribeJoins((e) => {
       const p = byId.get(e.productId)
@@ -112,6 +126,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       groupOf,
       membersOf,
       joinGroup,
+      simulateJoin,
       toasts,
       toast,
       tr: (key) => t(key, profile.lang),
