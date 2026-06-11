@@ -60,8 +60,12 @@ async function viaClaudeRank(query: string, items: RankItem[]): Promise<string[]
               items: { type: 'string' as const },
               description: 'id товаров, релевантных запросу, по убыванию релевантности; пустой массив если ничего не подходит',
             },
+            maxPriceKzt: {
+              type: ['number', 'null'] as const,
+              description: 'верхняя граница цены в тенге, если она явно указана в запросе («до 20 тысяч» → 20000), иначе null',
+            },
           },
-          required: ['ids'],
+          required: ['ids', 'maxPriceKzt'],
           additionalProperties: false,
         },
       },
@@ -75,7 +79,13 @@ async function viaClaudeRank(query: string, items: RankItem[]): Promise<string[]
   if (response.stop_reason === 'refusal') return []
   const block = response.content.find((b) => b.type === 'text')
   if (!block || block.type !== 'text') return []
-  return (JSON.parse(block.text).ids as string[]) ?? []
+  const { ids, maxPriceKzt } = JSON.parse(block.text) as { ids: string[]; maxPriceKzt: number | null }
+  if (!Array.isArray(ids)) return []
+  if (typeof maxPriceKzt === 'number' && maxPriceKzt > 0) {
+    const price = new Map(items.map((i) => [i.id, i.priceKzt ?? 0]))
+    return ids.filter((id) => (price.get(id) ?? 0) <= maxPriceKzt * 1.1) // +10% допуск
+  }
+  return ids
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
