@@ -18,7 +18,7 @@ export default function DailyPick({ recos }: { recos: Reco[] }) {
   const [data, setData] = useState<PickData | null>(null)
 
   useEffect(() => {
-    const cacheKey = `birge_pick_${new Date().toDateString()}_${profile.lang}`
+    const cacheKey = `birge_pick_v2_${new Date().toDateString()}_${profile.lang}`
     try {
       const cached = localStorage.getItem(cacheKey)
       if (cached) {
