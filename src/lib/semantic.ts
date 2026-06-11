@@ -11,8 +11,9 @@ let vectorsPromise: Promise<VectorFile | null> | null = null
 
 function loadVectors(): Promise<VectorFile | null> {
   if (!vectorsPromise) {
+    // content-type guard: SPA-rewrite отдаёт index.html с кодом 200 на отсутствующий файл
     vectorsPromise = fetch('/vectors.json')
-      .then((r) => (r.ok ? r.json() : null))
+      .then((r) => (r.ok && r.headers.get('content-type')?.includes('json') ? r.json() : null))
       .catch(() => null)
   }
   return vectorsPromise

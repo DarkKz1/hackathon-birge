@@ -37,11 +37,10 @@ export interface Profile {
 
 export type GroupStatus = 'filling' | 'complete' | 'expired'
 
-export interface GroupState {
-  extraMembers: number
+export interface GroupView {
   joined: boolean
-  joinedAt?: number
   deadline: number
+  status: GroupStatus
 }
 
 export interface Reco {

@@ -10,7 +10,7 @@ import { BottomNav, Chip, EsimBadge, Logo, ProgressBar } from '../components/ui'
 import { kzt, timeLeft } from '../lib/format'
 
 function HotCard({ p }: { p: Product }) {
-  const { membersOf, groupOf, tr } = useStore()
+  const { membersOf, groupOf, tr, lang } = useStore()
   const m = membersOf(p)
   const need = Math.max(0, p.tiers[0].min - m)
   return (
@@ -28,7 +28,7 @@ function HotCard({ p }: { p: Product }) {
         <div className="mt-2"><ProgressBar value={m} max={p.tiers[0].min} complete={need === 0} /></div>
         <div className="mt-1.5 flex justify-between gap-2 text-[10px] font-semibold text-paper/60">
           <span className="whitespace-nowrap">{tr('need_more')}: {need}</span>
-          <span className="text-coral whitespace-nowrap">⏱ {timeLeft(groupOf(p).deadline)}</span>
+          <span className="text-coral whitespace-nowrap">⏱ {timeLeft(groupOf(p).deadline, lang)}</span>
         </div>
       </div>
     </Link>
@@ -36,7 +36,7 @@ function HotCard({ p }: { p: Product }) {
 }
 
 export default function Feed() {
-  const { profile, membersOf, tr } = useStore()
+  const { profile, membersOf, groupOf, joinsVersion, tr } = useStore()
   const [cat, setCat] = useState<Category | 'all'>('all')
   const [q, setQ] = useState('')
   const [semHits, setSemHits] = useState<Map<string, number> | null>(null)
@@ -58,10 +58,11 @@ export default function Feed() {
     return () => clearTimeout(t)
   }, [q])
 
+  // joinsVersion в deps: live-джойны двигают и рекомендации, и «почти собраны»
   const recos = useMemo(
     () => recommend(catalog, profile, membersOf),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [profile],
+    [profile, joinsVersion],
   )
 
   const hot = useMemo(
@@ -69,12 +70,12 @@ export default function Feed() {
       catalog
         .filter((p) => {
           const fill = membersOf(p) / p.tiers[0].min
-          return fill >= 0.6
+          return fill >= 0.6 && fill < 1 && groupOf(p).status === 'filling'
         })
         .sort((a, b) => membersOf(b) / b.tiers[0].min - membersOf(a) / a.tiers[0].min)
         .slice(0, 8),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+    [joinsVersion],
   )
 
   const visible = (
@@ -139,11 +140,19 @@ export default function Feed() {
       </div>
 
       {/* product grid */}
-      <div className="mt-4 px-5 grid grid-cols-2 gap-3">
-        {visible.slice(0, 30).map((r, i) => (
-          <ProductCard key={r.product.id} reco={r} delay={Math.min(i, 8) * 40} />
-        ))}
-      </div>
+      {visible.length === 0 && q ? (
+        <div className="mt-16 px-5 text-center rise">
+          <div className="text-[40px]">🔍</div>
+          <div className="mt-3 font-bold text-[16px]">{tr('search_empty')}</div>
+          <p className="mt-1.5 text-[13px] text-ink-3 max-w-[260px] mx-auto">{tr('search_empty_hint')}</p>
+        </div>
+      ) : (
+        <div className="mt-4 px-5 grid grid-cols-2 gap-3">
+          {visible.slice(0, 30).map((r, i) => (
+            <ProductCard key={r.product.id} reco={r} delay={Math.min(i, 8) * 40} />
+          ))}
+        </div>
+      )}
 
       <BottomNav />
     </div>

@@ -1,19 +1,19 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { catalog, useStore } from '../lib/store'
+import { useStore } from '../lib/store'
 import { BottomNav, Button, ProgressBar } from '../components/ui'
 import { kzt, pct, timeLeft } from '../lib/format'
 import { useEffect, useState } from 'react'
 
 export default function Groups() {
   const nav = useNavigate()
-  const { groups, membersOf, tr } = useStore()
+  const { joinedProducts, membersOf, groupOf, tr, lang } = useStore()
   const [, tick] = useState(0)
   useEffect(() => {
     const t = setInterval(() => tick((x) => x + 1), 1000)
     return () => clearInterval(t)
   }, [])
 
-  const joined = catalog.filter((p) => groups[p.id]?.joined)
+  const joined = joinedProducts()
 
   return (
     <div className="min-h-dvh bg-paper pb-28">
@@ -33,9 +33,11 @@ export default function Groups() {
         <div className="px-5 mt-4 space-y-3">
           {joined.map((p, i) => {
             const m = membersOf(p)
-            const complete = m >= p.tiers[0].min
-            const price = complete ? Math.min(p.tiers[0].priceKzt, m >= p.tiers[1].min ? p.tiers[1].priceKzt : p.tiers[0].priceKzt) : p.tiers[0].priceKzt
-            const g = groups[p.id]
+            const g = groupOf(p)
+            const complete = g.status === 'complete'
+            const expired = g.status === 'expired'
+            const goal = complete ? p.tiers[1] : p.tiers[0]
+            const price = m >= p.tiers[1].min ? p.tiers[1].priceKzt : p.tiers[0].priceKzt
             return (
               <Link
                 key={p.id}
@@ -47,10 +49,20 @@ export default function Groups() {
                   <img src={p.image} alt="" className="w-[68px] h-[68px] object-contain rounded-2xl bg-white" />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-2">
-                      <span className={`text-[11px] font-extrabold px-2 py-0.5 rounded-full ${complete ? 'bg-lime/25 text-lime-deep' : 'bg-amber-100 text-amber-700'}`}>
-                        {complete ? `✓ ${tr('status_complete')}` : `⏳ ${tr('status_filling')}`}
+                      <span
+                        className={`text-[11px] font-extrabold px-2 py-0.5 rounded-full ${
+                          complete
+                            ? 'bg-lime/25 text-lime-deep'
+                            : expired
+                              ? 'bg-coral/15 text-coral'
+                              : 'bg-amber-100 text-amber-700'
+                        }`}
+                      >
+                        {complete ? `✓ ${tr('status_complete')}` : expired ? `↩️ ${tr('status_expired')}` : `⏳ ${tr('status_filling')}`}
                       </span>
-                      {!complete && <span className="text-[11px] font-bold text-coral">⏱ {timeLeft(g.deadline)}</span>}
+                      {!complete && !expired && (
+                        <span className="text-[11px] font-bold text-coral whitespace-nowrap">⏱ {timeLeft(g.deadline, lang)}</span>
+                      )}
                     </div>
                     <div className="mt-1.5 text-[13px] font-semibold leading-snug line-clamp-1">{p.title}</div>
                     <div className="mt-1 flex items-baseline gap-1.5">
@@ -61,8 +73,8 @@ export default function Groups() {
                   </div>
                 </div>
                 <div className="mt-3 flex items-center gap-2">
-                  <div className="flex-1"><ProgressBar value={m} max={p.tiers[0].min} complete={complete} /></div>
-                  <span className="text-[12px] font-bold tabular-nums">{m}/{p.tiers[0].min}</span>
+                  <div className="flex-1"><ProgressBar value={m} max={goal.min} complete={complete} /></div>
+                  <span className="text-[12px] font-bold tabular-nums">{Math.min(m, goal.min)}/{goal.min}</span>
                 </div>
               </Link>
             )

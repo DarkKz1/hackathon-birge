@@ -74,17 +74,17 @@ export function ProgressBar({ value, max, complete }: { value: number; max: numb
 
 const AVA_COLORS = ['#d9f99d', '#fde68a', '#fbcfe8', '#c7d2fe', '#a7f3d0', '#fecaca']
 
-export function Avatars({ count, seed, you }: { count: number; seed: number; you?: boolean }) {
+export function Avatars({ count, seed, you, youLabel = 'Вы' }: { count: number; seed: number; you?: boolean; youLabel?: string }) {
   const shown = Math.min(count, 5)
   return (
     <div className="flex items-center">
       {Array.from({ length: shown }).map((_, i) => (
         <div
           key={i}
-          className="w-8 h-8 rounded-full border-2 border-card flex items-center justify-center text-[12px] font-bold text-ink -ml-2 first:ml-0"
+          className="w-8 h-8 rounded-full border-2 border-card flex items-center justify-center text-[11px] font-bold text-ink -ml-2 first:ml-0"
           style={{ background: AVA_COLORS[(seed + i) % AVA_COLORS.length] }}
         >
-          {you && i === shown - 1 ? 'Вы' : initials(fakeName(seed + i))}
+          {you && i === shown - 1 ? youLabel : initials(fakeName(seed + i))}
         </div>
       ))}
       {count > shown && (
@@ -133,7 +133,7 @@ export function EsimBadge({ compact = false }: { compact?: boolean }) {
 const TABS = [
   {
     to: '/feed',
-    label: ['Лента', 'Лента'],
+    label: ['Лента', 'Таспа'],
     icon: (a: boolean) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={a ? 2.4 : 1.8}>
         <rect x="3" y="3" width="8" height="8" rx="2" />

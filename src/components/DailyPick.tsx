@@ -18,14 +18,25 @@ export default function DailyPick({ recos }: { recos: Reco[] }) {
 
   useEffect(() => {
     const cacheKey = `birge_pick_${new Date().toDateString()}_${profile.lang}`
-    const cached = localStorage.getItem(cacheKey)
-    if (cached) {
-      setData(JSON.parse(cached))
-      return
+    try {
+      const cached = localStorage.getItem(cacheKey)
+      if (cached) {
+        const parsed = JSON.parse(cached) as PickData
+        // перепроверяем id по текущему каталогу — кэш мог пережить смену каталога
+        parsed.picks = (parsed.picks ?? []).filter((x) => byId.has(x.id))
+        if (parsed.intro && parsed.picks.length > 0) {
+          setData(parsed)
+          return
+        }
+      }
+    } catch {
+      /* битый кэш — игнорируем и генерируем заново */
     }
 
     const fallback = (): PickData => ({
-      intro: tr('pick_fallback_intro').replace('{name}', profile.name),
+      intro: profile.name
+        ? tr('pick_fallback_intro').replace('{name}', profile.name)
+        : tr('pick_fallback_intro').replace('{name}, ', '').replace('{name}', ''),
       picks: recos.slice(0, 3).map((r) => ({
         id: r.product.id,
         blurb: `${tr('pick_fallback_blurb')} ${kzt(r.product.retailKzt - r.product.tiers[0].priceKzt)}`,
@@ -58,7 +69,9 @@ export default function DailyPick({ recos }: { recos: Reco[] }) {
       .then((json) => {
         const picked: PickData = { ...json, picks: json.picks.filter((x: { id: string }) => byId.has(x.id)).slice(0, 3), source: 'llm' }
         if (picked.picks.length === 0) throw new Error('no valid picks')
-        localStorage.setItem(cacheKey, JSON.stringify(picked))
+        try {
+          localStorage.setItem(cacheKey, JSON.stringify(picked))
+        } catch { /* quota — живём без кэша */ }
         setData(picked)
       })
       .catch(() => setData(fallback()))

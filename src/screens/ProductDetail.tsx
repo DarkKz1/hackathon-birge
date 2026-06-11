@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import QRCode from 'qrcode'
-import { catalog, useStore } from '../lib/store'
+import { productById, useStore } from '../lib/store'
 import { Avatars, Button, EsimBadge, ProgressBar } from '../components/ui'
 import { MarketBadge } from '../components/ProductCard'
-import { kzt, pct, timeLeft } from '../lib/format'
+import { hourUnit, kzt, pct, timeLeft } from '../lib/format'
 import { recommend } from '../lib/recommend'
 import { predictFill } from '../lib/predict'
 
@@ -58,12 +58,13 @@ function QrOverlay({ url, title, onClose }: { url: string; title: string; onClos
 export default function ProductDetail() {
   const { id } = useParams()
   const nav = useNavigate()
-  const { profile, membersOf, groupOf, joinGroup, simulateJoin, toast, tr } = useStore()
-  const taps = useMemo(() => ({ n: 0, t: 0 }), [])
-  const p = catalog.find((x) => x.id === id)
+  const { profile, membersOf, groupOf, joinGroup, simulateJoin, toast, tr, lang } = useStore()
+  const taps = useRef({ n: 0, t: 0 })
+  const p = productById(id)
   const [sheet, setSheet] = useState(false)
   const [confetti, setConfetti] = useState(false)
   const [qr, setQr] = useState(false)
+  const [guestName, setGuestName] = useState('')
   const [, tick] = useState(0)
 
   useEffect(() => {
@@ -74,25 +75,32 @@ export default function ProductDetail() {
   const m = p ? membersOf(p) : 0
   const tier1Done = p ? m >= p.tiers[0].min : false
 
-  // fire confetti the moment the group completes (own join or remote)
+  // конфетти — только в МОМЕНТ сбора группы (переход false→true), не при каждом открытии
+  const prevDone = useRef<boolean | null>(null)
   useEffect(() => {
-    if (tier1Done && p && groupOf(p).joined) {
+    if (prevDone.current === false && tier1Done && p && groupOf(p).joined) {
       setConfetti(true)
       const t = setTimeout(() => setConfetti(false), 3000)
       return () => clearTimeout(t)
     }
-  }, [tier1Done]) // eslint-disable-line react-hooks/exhaustive-deps
+    prevDone.current = tier1Done
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tier1Done])
 
-  if (!p) return null
+  if (!p) return <Navigate to={profile.onboarded ? '/feed' : '/'} replace />
 
   const g = groupOf(p)
+  const expired = g.status === 'expired'
   const goal = tier1Done ? p.tiers[1] : p.tiers[0]
   const tier2Done = m >= p.tiers[1].min
+  const full = m >= p.tiers[1].min
   const price = tier2Done ? p.tiers[1].priceKzt : p.tiers[0].priceKzt
   const reasons = recommend([p], profile, membersOf)[0].reasons
+  const isGuest = !profile.onboarded
 
   const confirmJoin = () => {
-    joinGroup(p)
+    if (g.joined) return
+    joinGroup(p, isGuest ? guestName : undefined)
     setSheet(false)
     toast(tr('join_success'), '🎉')
     if (m + 1 >= p.tiers[0].min) {
@@ -107,9 +115,11 @@ export default function ProductDetail() {
         await navigator.share({ title: p.title, url })
         return
       }
-    } catch { /* user cancelled */ }
-    await navigator.clipboard.writeText(url)
-    toast(tr('invite_copied'), '🔗')
+      await navigator.clipboard.writeText(url)
+      toast(tr('invite_copied'), '🔗')
+    } catch {
+      /* пользователь отменил share / clipboard недоступен */
+    }
   }
 
   return (
@@ -125,10 +135,10 @@ export default function ProductDetail() {
           className="w-full h-[290px] object-contain pt-10"
           onClick={() => {
             const now = Date.now()
-            taps.n = now - taps.t < 600 ? taps.n + 1 : 1
-            taps.t = now
-            if (taps.n === 3) {
-              taps.n = 0
+            taps.current.n = now - taps.current.t < 600 ? taps.current.n + 1 : 1
+            taps.current.t = now
+            if (taps.current.n === 3) {
+              taps.current.n = 0
               simulateJoin(p)
             }
           }}
@@ -173,8 +183,15 @@ export default function ProductDetail() {
           {tr('source')}: {p.marketplace} · {tr('ship_eta')} ~{p.shipDays} {tr('days')}
         </div>
 
+        {/* expired banner */}
+        {expired && (
+          <div className="mt-4 rounded-2xl bg-coral/10 border border-coral/30 px-4 py-3 text-[13px] font-semibold text-coral rise">
+            ↩️ {tr('expired_banner')}
+          </div>
+        )}
+
         {/* price + group block */}
-        <div className="mt-4 bg-card rounded-3xl border border-line p-5 rise rise-1">
+        <div className={`mt-4 bg-card rounded-3xl border border-line p-5 rise rise-1 ${expired ? 'opacity-70' : ''}`}>
           <div className="flex items-end justify-between">
             <div>
               <div className="text-[12px] font-semibold text-ink-3">{tr('group_price')}</div>
@@ -191,9 +208,9 @@ export default function ProductDetail() {
           </div>
 
           <div className="mt-5 flex items-center justify-between">
-            <Avatars count={m} seed={parseInt(p.id.slice(1)) || 1} you={g.joined} />
+            <Avatars count={m} seed={parseInt(p.id.slice(1)) || 1} you={g.joined} youLabel={lang === 'kk' ? 'Сіз' : 'Вы'} />
             <div className="text-[13px] font-bold tabular-nums">
-              {m}<span className="text-ink-3">/{goal.min} {tr('members')}</span>
+              {Math.min(m, goal.min)}<span className="text-ink-3">/{goal.min} {tr('members')}</span>
             </div>
           </div>
           <div className="mt-2.5">
@@ -202,25 +219,29 @@ export default function ProductDetail() {
 
           <div className="mt-3 flex items-center justify-between text-[12px] font-semibold">
             <span className="text-ink-2">
-              {tier1Done
-                ? `${tr('group_complete').split('!')[0]}! 🎉`
-                : `${tr('need_more')}: ${goal.min - m}`}
+              {expired
+                ? tr('status_expired')
+                : tier1Done
+                  ? `${tr('group_complete').split('!')[0]}! 🎉`
+                  : `${tr('need_more')}: ${goal.min - m}`}
             </span>
-            <span className="text-coral">⏱ {tr('time_left')}: {timeLeft(g.deadline)}</span>
+            {!expired && (
+              <span className="text-coral whitespace-nowrap">⏱ {tr('time_left')}: {timeLeft(g.deadline, lang)}</span>
+            )}
           </div>
 
           {/* fill prediction */}
-          {!tier1Done && (() => {
+          {!tier1Done && !expired && (() => {
             const { prob, etaHours } = predictFill(p, m, g.deadline)
             return (
               <div className="mt-3 inline-flex items-center gap-1.5 bg-violet/10 text-violet rounded-full px-3 py-1.5 text-[12px] font-bold">
-                📈 {tr('predict_label')} · {prob}% · {tr('predict_eta')} ~{etaHours}ч
+                📈 {tr('predict_label')} · {prob}% · {tr('predict_eta')} ~{etaHours}{hourUnit(lang)}
               </div>
             )
           })()}
 
           {/* next tier teaser */}
-          {!tier2Done && (
+          {!tier2Done && !expired && (
             <div className="mt-4 rounded-2xl bg-paper border border-dashed border-ink-3/40 px-4 py-3 text-[12px] font-semibold text-ink-2">
               💡 {p.tiers[1].min} {tr('members')} {tr('next_tier')} <b className="text-ink">{kzt(p.tiers[1].priceKzt)}</b> (−{pct(p.retailKzt, p.tiers[1].priceKzt)}%)
             </div>
@@ -268,9 +289,17 @@ export default function ProductDetail() {
 
       {/* sticky CTA */}
       <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-card/95 backdrop-blur-lg border-t border-line px-5 pt-3 pb-[max(env(safe-area-inset-bottom),16px)] z-40">
-        {g.joined ? (
+        {expired ? (
+          <div className="w-full rounded-2xl py-4 bg-line text-ink-3 font-bold text-[16px] text-center">
+            ↩️ {tr('status_expired')}
+          </div>
+        ) : g.joined ? (
           <div className="w-full rounded-2xl py-4 bg-lime/25 text-lime-deep font-bold text-[16px] text-center">
             ✓ {tr('joined_badge')} · {kzt(price)}
+          </div>
+        ) : full ? (
+          <div className="w-full rounded-2xl py-4 bg-line text-ink-2 font-bold text-[16px] text-center">
+            {tr('group_full')}
           </div>
         ) : (
           <Button variant="lime" onClick={() => setSheet(true)}>
@@ -298,13 +327,31 @@ export default function ProductDetail() {
               </div>
             </div>
 
+            {isGuest && (
+              <div className="mt-4">
+                <label className="text-[13px] font-bold text-ink-2">{tr('guest_name_label')}</label>
+                <input
+                  value={guestName}
+                  onChange={(e) => setGuestName(e.target.value)}
+                  maxLength={24}
+                  autoFocus
+                  className="mt-2 w-full bg-paper border border-line rounded-2xl px-4 py-3 text-[16px] font-semibold outline-none focus:border-ink"
+                  placeholder="Айдос"
+                />
+                <div className="mt-1.5 text-[11px] text-ink-3 font-medium">{tr('guest_note')}</div>
+              </div>
+            )}
+
             <div className="mt-4 space-y-2.5 text-[13px] font-medium text-ink-2">
               <div className="flex gap-2.5 items-start"><span>🔒</span>{tr('join_hold')}</div>
               <div className="flex gap-2.5 items-start"><span>↩️</span>{tr('join_refund')}</div>
-              <div className="flex gap-2.5 items-start"><span>🛡</span>{tr('esim_verified')} — {profile.phone}</div>
+              <div className="flex gap-2.5 items-start">
+                <span>🛡</span>
+                {isGuest ? `${tr('guest_badge')} · ${tr('guest_note')}` : `${tr('esim_verified')} — ${profile.phone}`}
+              </div>
             </div>
 
-            <Button variant="primary" className="mt-6" onClick={confirmJoin}>
+            <Button variant="primary" className="mt-6" disabled={isGuest && !guestName.trim()} onClick={confirmJoin}>
               {tr('join_confirm')} {kzt(price)}
             </Button>
           </div>

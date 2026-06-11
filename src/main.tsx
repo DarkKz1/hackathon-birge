@@ -16,7 +16,9 @@ import ProfileScreen from './screens/ProfileScreen'
 function Guard({ children }: { children: React.ReactNode }) {
   const { profile } = useStore()
   const loc = useLocation()
-  if (!profile.onboarded && !['/', '/verify', '/setup', '/interests'].includes(loc.pathname)) {
+  // /p/* открыт гостям — сценарий «отсканировал QR → сразу карточка товара»
+  const guestAllowed = ['/', '/verify', '/setup', '/interests'].includes(loc.pathname) || loc.pathname.startsWith('/p/')
+  if (!profile.onboarded && !guestAllowed) {
     return <Navigate to="/" replace />
   }
   return <>{children}</>
@@ -41,6 +43,10 @@ function App() {
       <Toasts />
     </BrowserRouter>
   )
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').catch(() => {})
 }
 
 createRoot(document.getElementById('root')!).render(

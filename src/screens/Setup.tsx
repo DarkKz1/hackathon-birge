@@ -33,6 +33,7 @@ export default function Setup() {
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
+            maxLength={24}
             className="mt-2 w-full bg-card border border-line rounded-2xl px-5 py-4 text-[17px] font-semibold outline-none focus:border-ink"
             placeholder="Диас"
           />

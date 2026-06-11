@@ -2,14 +2,17 @@ export const kzt = (n: number) => `${n.toLocaleString('ru-RU').replace(/ /g, ' 
 
 export const pct = (retail: number, price: number) => Math.round((1 - price / retail) * 100)
 
-export function timeLeft(deadline: number): string {
+export function timeLeft(deadline: number, lang: 'ru' | 'kk' = 'ru'): string {
   const ms = Math.max(0, deadline - Date.now())
   const h = Math.floor(ms / 3_600_000)
   const m = Math.floor((ms % 3_600_000) / 60_000)
   const s = Math.floor((ms % 60_000) / 1000)
-  if (h > 0) return `${h}ч ${String(m).padStart(2, '0')}м`
+  const [hu, mu] = lang === 'kk' ? ['сағ', 'мин'] : ['ч', 'м']
+  if (h > 0) return `${h}${hu} ${String(m).padStart(2, '0')}${mu}`
   return `${m}:${String(s).padStart(2, '0')}`
 }
+
+export const hourUnit = (lang: 'ru' | 'kk') => (lang === 'kk' ? 'сағ' : 'ч')
 
 const FIRST = ['Айгерим', 'Данияр', 'Аружан', 'Алишер', 'Мадина', 'Тимур', 'Жанель', 'Ерлан', 'Камила', 'Санжар', 'Дильназ', 'Нурсултан']
 
