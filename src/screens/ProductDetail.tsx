@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import QRCode from 'qrcode'
-import { ArrowDownRight, Check, ChevronLeft, Clock, Lock, QrCode, Share2, ShieldCheck, TrendingUp, Undo2 } from 'lucide-react'
+import { ArrowDownRight, Check, ChevronLeft, Clock, CreditCard, Lock, MapPin, QrCode, Share2, ShieldCheck, Smartphone, TrendingUp, Undo2 } from 'lucide-react'
 import { productById, useStore } from '../lib/store'
 import { Avatars, Button, EsimBadge, ProgressBar } from '../components/ui'
 import { MarketBadge } from '../components/ProductCard'
 import { hourUnit, kzt, pct, timeLeft } from '../lib/format'
 import { recommend } from '../lib/recommend'
 import { predictFill } from '../lib/predict'
+import { districtGroup } from '../lib/esim'
 
 function Confetti() {
   const pieces = useMemo(
@@ -66,6 +67,7 @@ export default function ProductDetail() {
   const [confetti, setConfetti] = useState(false)
   const [qr, setQr] = useState(false)
   const [guestName, setGuestName] = useState('')
+  const [payMethod, setPayMethod] = useState<'carrier' | 'card'>('carrier')
   const [, tick] = useState(0)
 
   useEffect(() => {
@@ -249,6 +251,35 @@ export default function ProductDetail() {
           )}
         </div>
 
+        {/* district thermometer — eSIM killer feature (Geofencing + Region Device Count) */}
+        {!expired && !isGuest && (() => {
+          const dg = districtGroup(p, profile)
+          const left = Math.max(1, dg.threshold - dg.waiting)
+          const fill = Math.min(100, (dg.waiting / dg.threshold) * 100)
+          return (
+            <div className="mt-4 rise rise-2 rounded-3xl border border-violet/30 bg-violet/5 p-4">
+              <div className="flex items-center gap-1.5">
+                <MapPin size={15} className="text-violet" />
+                <h3 className="text-[14px] font-bold">{tr('district_title')}</h3>
+              </div>
+              <div className="mt-2 flex items-end justify-between gap-3">
+                <div className="text-[13px] text-ink-2 leading-snug">
+                  <b className="text-[15px]">{dg.waiting}</b> {tr('district_waiting').replace('{d}', dg.district)}
+                </div>
+              </div>
+              <div className="mt-2.5 h-2 w-full rounded-full bg-violet/15 overflow-hidden">
+                <div className="h-full rounded-full bg-violet transition-all duration-700" style={{ width: `${fill}%` }} />
+              </div>
+              <div className="mt-2 text-[12px] font-semibold text-violet">
+                {tr('district_left').replace('{n}', String(left))}
+              </div>
+              <div className="mt-2 flex items-center gap-1 text-[10px] text-ink-3 font-medium">
+                <Smartphone size={10} /> {tr('district_via')}
+              </div>
+            </div>
+          )
+        })()}
+
         {/* why recommended */}
         {reasons.length > 0 && (
           <div className="mt-4 rise rise-2">
@@ -342,6 +373,29 @@ export default function ProductDetail() {
                 <div className="mt-1.5 text-[11px] text-ink-3 font-medium">{tr('guest_note')}</div>
               </div>
             )}
+
+            {/* payment method — Carrier Billing (со счёта телефона) vs карта */}
+            <div className="mt-4">
+              <div className="text-[12px] font-bold text-ink-3 mb-2">{tr('pay_method')}</div>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  onClick={() => setPayMethod('carrier')}
+                  className={`rounded-2xl border-2 p-3 text-left transition-all active:scale-95 ${payMethod === 'carrier' ? 'border-ink bg-paper' : 'border-line'}`}
+                >
+                  <Smartphone size={16} className="text-ink-2" />
+                  <div className="mt-1.5 text-[13px] font-bold leading-tight">{tr('pay_carrier')}</div>
+                  <div className="text-[10px] text-ink-3 font-medium leading-tight mt-0.5">{tr('pay_carrier_note')}</div>
+                </button>
+                <button
+                  onClick={() => setPayMethod('card')}
+                  className={`rounded-2xl border-2 p-3 text-left transition-all active:scale-95 ${payMethod === 'card' ? 'border-ink bg-paper' : 'border-line'}`}
+                >
+                  <CreditCard size={16} className="text-ink-2" />
+                  <div className="mt-1.5 text-[13px] font-bold leading-tight">{tr('pay_card')}</div>
+                  <div className="text-[10px] text-ink-3 font-medium leading-tight mt-0.5">Kaspi · Visa</div>
+                </button>
+              </div>
+            </div>
 
             <div className="mt-4 space-y-2.5 text-[13px] font-medium text-ink-2">
               <div className="flex gap-2.5 items-start"><Lock size={15} className="shrink-0 mt-0.5 text-ink-3" />{tr('join_hold')}</div>

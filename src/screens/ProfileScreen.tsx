@@ -1,12 +1,15 @@
+import { BadgeCheck } from 'lucide-react'
 import { useStore } from '../lib/store'
 import { BottomNav, Chip, EsimBadge } from '../components/ui'
 import { CATEGORY_KEYS } from '../lib/recommend'
 import { CITIES } from '../lib/i18n'
 import type { Category } from '../lib/types'
 import { kzt, initials } from '../lib/format'
+import { tenureOf } from '../lib/esim'
 
 export default function ProfileScreen() {
   const { profile, setProfile, tr, reset } = useStore()
+  const tenure = tenureOf(profile)
 
   const toggleInterest = (c: Category) => {
     const next = profile.interests.includes(c)
@@ -44,6 +47,21 @@ export default function ProfileScreen() {
             <div className="mt-1 text-[11px] text-paper/40 font-semibold">{profile.operator}</div>
             <p className="mt-3 text-[12px] leading-relaxed text-paper/55">{tr('esim_what')}</p>
           </div>
+
+          {/* tenure trust — KYC Tenure → лимит группового холда */}
+          {tenure.trusted && (
+            <div className="mt-3 rounded-2xl bg-lime/15 border border-lime/30 p-4">
+              <div className="flex items-center gap-1.5">
+                <BadgeCheck size={15} className="text-lime" />
+                <span className="text-[13px] font-bold text-lime">{tr('tenure_trusted')}</span>
+              </div>
+              <div className="mt-1.5 text-[12px] text-paper/60">{tr('tenure_years').replace('{y}', String(tenure.years))}</div>
+              <div className="mt-2 flex items-baseline gap-2">
+                <span className="text-[11px] text-paper/40 font-semibold">{tr('tenure_limit')}</span>
+                <span className="text-[15px] font-extrabold text-paper">{kzt(tenure.holdLimitKzt)}</span>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* budget */}
