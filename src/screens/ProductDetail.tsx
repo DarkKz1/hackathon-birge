@@ -6,6 +6,7 @@ import { Avatars, Button, EsimBadge, ProgressBar } from '../components/ui'
 import { MarketBadge } from '../components/ProductCard'
 import { kzt, pct, timeLeft } from '../lib/format'
 import { recommend } from '../lib/recommend'
+import { predictFill } from '../lib/predict'
 
 function Confetti() {
   const pieces = useMemo(
@@ -207,6 +208,16 @@ export default function ProductDetail() {
             </span>
             <span className="text-coral">⏱ {tr('time_left')}: {timeLeft(g.deadline)}</span>
           </div>
+
+          {/* fill prediction */}
+          {!tier1Done && (() => {
+            const { prob, etaHours } = predictFill(p, m, g.deadline)
+            return (
+              <div className="mt-3 inline-flex items-center gap-1.5 bg-violet/10 text-violet rounded-full px-3 py-1.5 text-[12px] font-bold">
+                📈 {tr('predict_label')} · {prob}% · {tr('predict_eta')} ~{etaHours}ч
+              </div>
+            )
+          })()}
 
           {/* next tier teaser */}
           {!tier2Done && (

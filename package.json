@@ -10,8 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.104.1",
     "@supabase/supabase-js": "^2.108.1",
     "@tailwindcss/vite": "^4.3.0",
+    "@vercel/node": "^5.8.15",
     "qrcode": "^1.5.4",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",

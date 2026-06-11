@@ -4,6 +4,7 @@ import { catalog, useStore } from '../lib/store'
 import { recommend, CATEGORY_KEYS } from '../lib/recommend'
 import type { Category, Product } from '../lib/types'
 import ProductCard from '../components/ProductCard'
+import DailyPick from '../components/DailyPick'
 import { BottomNav, Chip, EsimBadge, Logo, ProgressBar } from '../components/ui'
 import { kzt, timeLeft } from '../lib/format'
 
@@ -83,6 +84,9 @@ export default function Feed() {
           className="rise rise-1 mt-3 w-full bg-card border border-line rounded-2xl px-4 py-3 text-[15px] outline-none focus:border-ink"
         />
       </div>
+
+      {/* AI daily pick */}
+      {!q && cat === 'all' && <DailyPick recos={recos} />}
 
       {/* hot groups rail */}
       {hot.length > 0 && !q && cat === 'all' && (
