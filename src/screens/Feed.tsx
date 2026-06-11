@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { semanticSearch } from '../lib/semantic'
 import { catalog, useStore } from '../lib/store'
 import { recommend, CATEGORY_KEYS } from '../lib/recommend'
 import type { Category, Product } from '../lib/types'
@@ -38,6 +39,24 @@ export default function Feed() {
   const { profile, membersOf, tr } = useStore()
   const [cat, setCat] = useState<Category | 'all'>('all')
   const [q, setQ] = useState('')
+  const [semHits, setSemHits] = useState<Map<string, number> | null>(null)
+  const searchSeq = useRef(0)
+
+  // семантический поиск: debounce 350мс, при недоступности — substring fallback
+  useEffect(() => {
+    const query = q.trim()
+    const seq = ++searchSeq.current
+    if (query.length < 3) {
+      setSemHits(null)
+      return
+    }
+    const t = setTimeout(async () => {
+      const hits = await semanticSearch(query)
+      if (searchSeq.current !== seq) return
+      setSemHits(hits ? new Map(hits.map((h) => [h.id, h.score])) : null)
+    }, 350)
+    return () => clearTimeout(t)
+  }, [q])
 
   const recos = useMemo(
     () => recommend(catalog, profile, membersOf),
@@ -58,11 +77,13 @@ export default function Feed() {
     [],
   )
 
-  const visible = recos.filter(
-    (r) =>
-      (cat === 'all' || r.product.category === cat) &&
-      (!q || r.product.title.toLowerCase().includes(q.toLowerCase())),
-  )
+  const visible = (
+    q && semHits
+      ? recos
+          .filter((r) => semHits.has(r.product.id))
+          .sort((a, b) => semHits.get(b.product.id)! - semHits.get(a.product.id)!)
+      : recos.filter((r) => !q || r.product.title.toLowerCase().includes(q.toLowerCase()))
+  ).filter((r) => cat === 'all' || r.product.category === cat)
 
   const cats: (Category | 'all')[] = ['all', ...profile.interests, ...(['electronics', 'beauty', 'home', 'fashion', 'sport'] as Category[]).filter((c) => !profile.interests.includes(c))]
 
@@ -77,12 +98,19 @@ export default function Feed() {
         <h1 className="font-display text-[22px] font-bold rise">
           {tr('feed_for_you')}, {profile.name} 👋
         </h1>
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder={tr('feed_search')}
-          className="rise rise-1 mt-3 w-full bg-card border border-line rounded-2xl px-4 py-3 text-[15px] outline-none focus:border-ink"
-        />
+        <div className="relative rise rise-1 mt-3">
+          <input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder={tr('feed_search')}
+            className="w-full bg-card border border-line rounded-2xl px-4 py-3 text-[15px] outline-none focus:border-ink"
+          />
+          {q && semHits && (
+            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] font-bold text-violet bg-violet/10 rounded-full px-2 py-1">
+              ✨ {tr('search_ai')}
+            </span>
+          )}
+        </div>
       </div>
 
       {/* AI daily pick */}
