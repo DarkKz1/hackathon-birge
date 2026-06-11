@@ -1,0 +1,2579 @@
+[
+ {
+  "id": "p121",
+  "title": "iPhone 5s",
+  "brand": "Apple",
+  "category": "electronics",
+  "image": "/img/p121-t.webp",
+  "images": [
+   "/img/p121-0.webp",
+   "/img/p121-1.webp",
+   "/img/p121-2.webp"
+  ],
+  "rating": 2.83,
+  "retailKzt": 104000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 82200
+   },
+   {
+    "min": 16,
+    "priceKzt": 65500
+   }
+  ],
+  "seedMembers": 5,
+  "hoursLeft": 26,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 8
+ },
+ {
+  "id": "p122",
+  "title": "iPhone 6",
+  "brand": "Apple",
+  "category": "electronics",
+  "image": "/img/p122-t.webp",
+  "images": [
+   "/img/p122-0.webp",
+   "/img/p122-1.webp",
+   "/img/p122-2.webp"
+  ],
+  "rating": 3.41,
+  "retailKzt": 156000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 121700
+   },
+   {
+    "min": 24,
+    "priceKzt": 98300
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 33,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 15
+ },
+ {
+  "id": "p123",
+  "title": "iPhone 13 Pro",
+  "brand": "Apple",
+  "category": "electronics",
+  "image": "/img/p123-t.webp",
+  "images": [
+   "/img/p123-0.webp",
+   "/img/p123-1.webp",
+   "/img/p123-2.webp"
+  ],
+  "rating": 4.12,
+  "retailKzt": 572000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 446200
+   },
+   {
+    "min": 30,
+    "priceKzt": 354600
+   }
+  ],
+  "seedMembers": 9,
+  "hoursLeft": 41,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 13
+ },
+ {
+  "id": "p124",
+  "title": "iPhone X",
+  "brand": "Apple",
+  "category": "electronics",
+  "image": "/img/p124-t.webp",
+  "images": [
+   "/img/p124-0.webp",
+   "/img/p124-1.webp",
+   "/img/p124-2.webp"
+  ],
+  "rating": 2.51,
+  "retailKzt": 468000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 397800
+   },
+   {
+    "min": 24,
+    "priceKzt": 290200
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 24,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 16
+ },
+ {
+  "id": "p125",
+  "title": "Oppo A57",
+  "brand": "Oppo",
+  "category": "electronics",
+  "image": "/img/p125-t.webp",
+  "images": [
+   "/img/p125-0.webp",
+   "/img/p125-1.webp",
+   "/img/p125-2.webp"
+  ],
+  "rating": 3.94,
+  "retailKzt": 130000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 110500
+   },
+   {
+    "min": 30,
+    "priceKzt": 89700
+   }
+  ],
+  "seedMembers": 9,
+  "hoursLeft": 32,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 14
+ },
+ {
+  "id": "p126",
+  "title": "Oppo F19 Pro Plus",
+  "brand": "Oppo",
+  "category": "electronics",
+  "image": "/img/p126-t.webp",
+  "images": [
+   "/img/p126-0.webp",
+   "/img/p126-1.webp",
+   "/img/p126-2.webp"
+  ],
+  "rating": 3.51,
+  "retailKzt": 208000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 174700
+   },
+   {
+    "min": 24,
+    "priceKzt": 143500
+   }
+  ],
+  "seedMembers": 3,
+  "hoursLeft": 15,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 7
+ },
+ {
+  "id": "p78",
+  "title": "Apple MacBook Pro 14 Inch Space Grey",
+  "brand": "Apple",
+  "category": "electronics",
+  "image": "/img/p78-t.webp",
+  "images": [
+   "/img/p78-0.webp",
+   "/img/p78-1.webp",
+   "/img/p78-2.webp"
+  ],
+  "rating": 3.65,
+  "retailKzt": 1040000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 884000
+   },
+   {
+    "min": 24,
+    "priceKzt": 644800
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 32,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 15
+ },
+ {
+  "id": "p79",
+  "title": "Asus Zenbook Pro Dual Screen Laptop",
+  "brand": "Asus",
+  "category": "electronics",
+  "image": "/img/p79-t.webp",
+  "images": [
+   "/img/p79-0.webp",
+   "/img/p79-1.webp",
+   "/img/p79-2.webp"
+  ],
+  "rating": 3.95,
+  "retailKzt": 936000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 795600
+   },
+   {
+    "min": 17,
+    "priceKzt": 645800
+   }
+  ],
+  "seedMembers": 5,
+  "hoursLeft": 16,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 8
+ },
+ {
+  "id": "p80",
+  "title": "Huawei Matebook X Pro",
+  "brand": "Huawei",
+  "category": "electronics",
+  "image": "/img/p80-t.webp",
+  "images": [
+   "/img/p80-0.webp",
+   "/img/p80-1.webp",
+   "/img/p80-2.webp"
+  ],
+  "rating": 4.98,
+  "retailKzt": 728000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 611500
+   },
+   {
+    "min": 24,
+    "priceKzt": 502300
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 23,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 15
+ },
+ {
+  "id": "p81",
+  "title": "Lenovo Yoga 920",
+  "brand": "Lenovo",
+  "category": "electronics",
+  "image": "/img/p81-t.webp",
+  "images": [
+   "/img/p81-0.webp",
+   "/img/p81-1.webp",
+   "/img/p81-2.webp"
+  ],
+  "rating": 2.86,
+  "retailKzt": 572000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 480500
+   },
+   {
+    "min": 30,
+    "priceKzt": 389000
+   }
+  ],
+  "seedMembers": 9,
+  "hoursLeft": 31,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 13
+ },
+ {
+  "id": "p82",
+  "title": "New DELL XPS 13 9300 Laptop",
+  "brand": "Dell",
+  "category": "electronics",
+  "image": "/img/p82-t.webp",
+  "images": [
+   "/img/p82-0.webp",
+   "/img/p82-1.webp",
+   "/img/p82-2.webp"
+  ],
+  "rating": 2.67,
+  "retailKzt": 780000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 647400
+   },
+   {
+    "min": 24,
+    "priceKzt": 530400
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 14,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 16
+ },
+ {
+  "id": "p99",
+  "title": "Amazon Echo Plus",
+  "brand": "Amazon",
+  "category": "electronics",
+  "image": "/img/p99-t.webp",
+  "images": [
+   "/img/p99-0.webp",
+   "/img/p99-1.webp"
+  ],
+  "rating": 4.99,
+  "retailKzt": 52000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 42600
+   },
+   {
+    "min": 24,
+    "priceKzt": 34800
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 37,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 10
+ },
+ {
+  "id": "p100",
+  "title": "Apple Airpods",
+  "brand": "Apple",
+  "category": "electronics",
+  "image": "/img/p100-t.webp",
+  "images": [
+   "/img/p100-0.webp",
+   "/img/p100-1.webp",
+   "/img/p100-2.webp"
+  ],
+  "rating": 4.15,
+  "retailKzt": 67600,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 55400
+   },
+   {
+    "min": 17,
+    "priceKzt": 44600
+   }
+  ],
+  "seedMembers": 5,
+  "hoursLeft": 21,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 13
+ },
+ {
+  "id": "p101",
+  "title": "Apple AirPods Max Silver",
+  "brand": "Apple",
+  "category": "electronics",
+  "image": "/img/p101-t.webp",
+  "images": [
+   "/img/p101-0.webp"
+  ],
+  "rating": 3.47,
+  "retailKzt": 286000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 231700
+   },
+   {
+    "min": 24,
+    "priceKzt": 188800
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 28,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 10
+ },
+ {
+  "id": "p102",
+  "title": "Apple Airpower Wireless Charger",
+  "brand": "Apple",
+  "category": "electronics",
+  "image": "/img/p102-t.webp",
+  "images": [
+   "/img/p102-0.webp"
+  ],
+  "rating": 3.68,
+  "retailKzt": 41600,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 33700
+   },
+   {
+    "min": 30,
+    "priceKzt": 27000
+   }
+  ],
+  "seedMembers": 9,
+  "hoursLeft": 36,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 8
+ },
+ {
+  "id": "p103",
+  "title": "Apple HomePod Mini Cosmic Grey",
+  "brand": "Apple",
+  "category": "electronics",
+  "image": "/img/p103-t.webp",
+  "images": [
+   "/img/p103-0.webp"
+  ],
+  "rating": 4.62,
+  "retailKzt": 52000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 41600
+   },
+   {
+    "min": 24,
+    "priceKzt": 33800
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 19,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 11
+ },
+ {
+  "id": "p104",
+  "title": "Apple iPhone Charger",
+  "brand": "Apple",
+  "category": "electronics",
+  "image": "/img/p104-t.webp",
+  "images": [
+   "/img/p104-0.webp",
+   "/img/p104-1.webp"
+  ],
+  "rating": 4.15,
+  "retailKzt": 10400,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 8300
+   },
+   {
+    "min": 30,
+    "priceKzt": 6700
+   }
+  ],
+  "seedMembers": 9,
+  "hoursLeft": 27,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 9
+ },
+ {
+  "id": "p159",
+  "title": "iPad Mini 2021 Starlight",
+  "brand": "Apple",
+  "category": "electronics",
+  "image": "/img/p159-t.webp",
+  "images": [
+   "/img/p159-0.webp",
+   "/img/p159-1.webp",
+   "/img/p159-2.webp"
+  ],
+  "rating": 3.18,
+  "retailKzt": 260000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 215800
+   },
+   {
+    "min": 17,
+    "priceKzt": 174200
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 14,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 16
+ },
+ {
+  "id": "p160",
+  "title": "Samsung Galaxy Tab S8 Plus Grey",
+  "brand": "Samsung",
+  "category": "electronics",
+  "image": "/img/p160-t.webp",
+  "images": [
+   "/img/p160-0.webp",
+   "/img/p160-1.webp",
+   "/img/p160-2.webp"
+  ],
+  "rating": 4.68,
+  "retailKzt": 312000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 255800
+   },
+   {
+    "min": 17,
+    "priceKzt": 209000
+   }
+  ],
+  "seedMembers": 3,
+  "hoursLeft": 37,
+  "marketplace": "Amazon",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 10
+ },
+ {
+  "id": "p161",
+  "title": "Samsung Galaxy Tab White",
+  "brand": "Samsung",
+  "category": "electronics",
+  "image": "/img/p161-t.webp",
+  "images": [
+   "/img/p161-0.webp",
+   "/img/p161-1.webp",
+   "/img/p161-2.webp"
+  ],
+  "rating": 3.72,
+  "retailKzt": 182000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 149200
+   },
+   {
+    "min": 17,
+    "priceKzt": 120100
+   }
+  ],
+  "seedMembers": 5,
+  "hoursLeft": 45,
+  "marketplace": "Banggood",
+  "hotCities": [
+   "Алматы",
+   "Астана"
+  ],
+  "shipDays": 7
+ },
+ {
+  "id": "p6",
+  "title": "Calvin Klein CK One",
+  "brand": "Calvin Klein",
+  "category": "beauty",
+  "image": "/img/p6-t.webp",
+  "images": [
+   "/img/p6-0.webp",
+   "/img/p6-1.webp",
+   "/img/p6-2.webp"
+  ],
+  "rating": 4.37,
+  "retailKzt": 26000,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 21600
+   },
+   {
+    "min": 26,
+    "priceKzt": 17700
+   }
+  ],
+  "seedMembers": 7,
+  "hoursLeft": 22,
+  "marketplace": "Amazon",
+  "hotCities": [
+   "Алматы",
+   "Шымкент"
+  ],
+  "shipDays": 14
+ },
+ {
+  "id": "p7",
+  "title": "Chanel Coco Noir Eau De",
+  "brand": "Chanel",
+  "category": "beauty",
+  "image": "/img/p7-t.webp",
+  "images": [
+   "/img/p7-0.webp",
+   "/img/p7-1.webp",
+   "/img/p7-2.webp"
+  ],
+  "rating": 4.26,
+  "retailKzt": 67600,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 55400
+   },
+   {
+    "min": 21,
+    "priceKzt": 45300
+   }
+  ],
+  "seedMembers": 7,
+  "hoursLeft": 30,
+  "marketplace": "iHerb",
+  "hotCities": [
+   "Алматы",
+   "Шымкент"
+  ],
+  "shipDays": 12
+ },
+ {
+  "id": "p8",
+  "title": "Dior J'adore",
+  "brand": "Dior",
+  "category": "beauty",
+  "image": "/img/p8-t.webp",
+  "images": [
+   "/img/p8-0.webp",
+   "/img/p8-1.webp",
+   "/img/p8-2.webp"
+  ],
+  "rating": 3.8,
+  "retailKzt": 46800,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 38400
+   },
+   {
+    "min": 26,
+    "priceKzt": 31400
+   }
+  ],
+  "seedMembers": 7,
+  "hoursLeft": 13,
+  "marketplace": "Amazon",
+  "hotCities": [
+   "Алматы",
+   "Шымкент"
+  ],
+  "shipDays": 15
+ },
+ {
+  "id": "p9",
+  "title": "Dolce Shine Eau de",
+  "brand": "Dolce & Gabbana",
+  "category": "beauty",
+  "image": "/img/p9-t.webp",
+  "images": [
+   "/img/p9-0.webp",
+   "/img/p9-1.webp",
+   "/img/p9-2.webp"
+  ],
+  "rating": 3.96,
+  "retailKzt": 36400,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 29500
+   },
+   {
+    "min": 21,
+    "priceKzt": 24000
+   }
+  ],
+  "seedMembers": 7,
+  "hoursLeft": 20,
+  "marketplace": "iHerb",
+  "hotCities": [
+   "Алматы",
+   "Шымкент"
+  ],
+  "shipDays": 13
+ },
+ {
+  "id": "p10",
+  "title": "Gucci Bloom Eau de",
+  "brand": "Gucci",
+  "category": "beauty",
+  "image": "/img/p10-t.webp",
+  "images": [
+   "/img/p10-0.webp",
+   "/img/p10-1.webp",
+   "/img/p10-2.webp"
+  ],
+  "rating": 2.74,
+  "retailKzt": 41600,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 33700
+   },
+   {
+    "min": 17,
+    "priceKzt": 27000
+   }
+  ],
+  "seedMembers": 3,
+  "hoursLeft": 28,
+  "marketplace": "iHerb",
+  "hotCities": [
+   "Алматы",
+   "Шымкент"
+  ],
+  "shipDays": 10
+ },
+ {
+  "id": "p118",
+  "title": "Attitude Super Leaves Hand Soap",
+  "brand": "Attitude",
+  "category": "beauty",
+  "image": "/img/p118-t.webp",
+  "images": [
+   "/img/p118-0.webp",
+   "/img/p118-1.webp",
+   "/img/p118-2.webp"
+  ],
+  "rating": 3.19,
+  "retailKzt": 4700,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 3800
+   },
+   {
+    "min": 17,
+    "priceKzt": 3100
+   }
+  ],
+  "seedMembers": 3,
+  "hoursLeft": 27,
+  "marketplace": "iHerb",
+  "hotCities": [
+   "Алматы",
+   "Шымкент"
+  ],
+  "shipDays": 10
+ },
+ {
+  "id": "p119",
+  "title": "Olay Ultra Moisture Shea Butter Body Wash",
+  "brand": "Olay",
+  "category": "beauty",
+  "image": "/img/p119-t.webp",
+  "images": [
+   "/img/p119-0.webp",
+   "/img/p119-1.webp",
+   "/img/p119-2.webp"
+  ],
+  "rating": 4.51,
+  "retailKzt": 6800,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 5400
+   },
+   {
+    "min": 17,
+    "priceKzt": 4400
+   }
+  ],
+  "seedMembers": 5,
+  "hoursLeft": 35,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Алматы",
+   "Шымкент"
+  ],
+  "shipDays": 7
+ },
+ {
+  "id": "p120",
+  "title": "Vaseline Men Body and Face Lotion",
+  "brand": "Vaseline",
+  "category": "beauty",
+  "image": "/img/p120-t.webp",
+  "images": [
+   "/img/p120-0.webp",
+   "/img/p120-1.webp",
+   "/img/p120-2.webp"
+  ],
+  "rating": 3.16,
+  "retailKzt": 5200,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 4100
+   },
+   {
+    "min": 24,
+    "priceKzt": 3300
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 42,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Алматы",
+   "Шымкент"
+  ],
+  "shipDays": 14
+ },
+ {
+  "id": "p1",
+  "title": "Essence Mascara Lash Princess",
+  "brand": "Essence",
+  "category": "beauty",
+  "image": "/img/p1-t.webp",
+  "images": [
+   "/img/p1-0.webp"
+  ],
+  "rating": 2.56,
+  "retailKzt": 5200,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 4100
+   },
+   {
+    "min": 30,
+    "priceKzt": 3200
+   }
+  ],
+  "seedMembers": 9,
+  "hoursLeft": 33,
+  "marketplace": "Amazon",
+  "hotCities": [
+   "Алматы",
+   "Шымкент"
+  ],
+  "shipDays": 15
+ },
+ {
+  "id": "p2",
+  "title": "Eyeshadow Palette with Mirror",
+  "brand": "Glamour Beauty",
+  "category": "beauty",
+  "image": "/img/p2-t.webp",
+  "images": [
+   "/img/p2-0.webp"
+  ],
+  "rating": 2.86,
+  "retailKzt": 10400,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 8800
+   },
+   {
+    "min": 26,
+    "priceKzt": 6400
+   }
+  ],
+  "seedMembers": 6,
+  "hoursLeft": 40,
+  "marketplace": "Amazon",
+  "hotCities": [
+   "Алматы",
+   "Шымкент"
+  ],
+  "shipDays": 12
+ },
+ {
+  "id": "p3",
+  "title": "Powder Canister",
+  "brand": "Velvet Touch",
+  "category": "beauty",
+  "image": "/img/p3-t.webp",
+  "images": [
+   "/img/p3-0.webp"
+  ],
+  "rating": 4.64,
+  "retailKzt": 7800,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 6600
+   },
+   {
+    "min": 30,
+    "priceKzt": 5400
+   }
+  ],
+  "seedMembers": 9,
+  "hoursLeft": 24,
+  "marketplace": "Amazon",
+  "hotCities": [
+   "Алматы",
+   "Шымкент"
+  ],
+  "shipDays": 16
+ },
+ {
+  "id": "p4",
+  "title": "Red Lipstick",
+  "brand": "Chic Cosmetics",
+  "category": "beauty",
+  "image": "/img/p4-t.webp",
+  "images": [
+   "/img/p4-0.webp"
+  ],
+  "rating": 4.36,
+  "retailKzt": 6800,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 5700
+   },
+   {
+    "min": 26,
+    "priceKzt": 4700
+   }
+  ],
+  "seedMembers": 6,
+  "hoursLeft": 31,
+  "marketplace": "Amazon",
+  "hotCities": [
+   "Алматы",
+   "Шымкент"
+  ],
+  "shipDays": 13
+ },
+ {
+  "id": "p5",
+  "title": "Red Nail Polish",
+  "brand": "Nail Couture",
+  "category": "beauty",
+  "image": "/img/p5-t.webp",
+  "images": [
+   "/img/p5-0.webp"
+  ],
+  "rating": 4.32,
+  "retailKzt": 4700,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 3900
+   },
+   {
+    "min": 21,
+    "priceKzt": 3200
+   }
+  ],
+  "seedMembers": 6,
+  "hoursLeft": 39,
+  "marketplace": "iHerb",
+  "hotCities": [
+   "Алматы",
+   "Шымкент"
+  ],
+  "shipDays": 11
+ },
+ {
+  "id": "p11",
+  "title": "Annibale Colombo Bed",
+  "brand": "Annibale Colombo",
+  "category": "home",
+  "image": "/img/p11-t.webp",
+  "images": [
+   "/img/p11-0.webp",
+   "/img/p11-1.webp",
+   "/img/p11-2.webp"
+  ],
+  "rating": 4.77,
+  "retailKzt": 988000,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 790400
+   },
+   {
+    "min": 21,
+    "priceKzt": 642200
+   }
+  ],
+  "seedMembers": 2,
+  "hoursLeft": 11,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 14
+ },
+ {
+  "id": "p12",
+  "title": "Annibale Colombo Sofa",
+  "brand": "Annibale Colombo",
+  "category": "home",
+  "image": "/img/p12-t.webp",
+  "images": [
+   "/img/p12-0.webp",
+   "/img/p12-1.webp",
+   "/img/p12-2.webp"
+  ],
+  "rating": 3.92,
+  "retailKzt": 1300000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 1040000
+   },
+   {
+    "min": 17,
+    "priceKzt": 832000
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 19,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 11
+ },
+ {
+  "id": "p13",
+  "title": "Bedside Table African Cherry",
+  "brand": "Furniture Co.",
+  "category": "home",
+  "image": "/img/p13-t.webp",
+  "images": [
+   "/img/p13-0.webp",
+   "/img/p13-1.webp",
+   "/img/p13-2.webp"
+  ],
+  "rating": 2.87,
+  "retailKzt": 156000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 123200
+   },
+   {
+    "min": 16,
+    "priceKzt": 99800
+   }
+  ],
+  "seedMembers": 2,
+  "hoursLeft": 26,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 9
+ },
+ {
+  "id": "p14",
+  "title": "Knoll Saarinen Executive Conference Chair",
+  "brand": "Knoll",
+  "category": "home",
+  "image": "/img/p14-t.webp",
+  "images": [
+   "/img/p14-0.webp",
+   "/img/p14-1.webp",
+   "/img/p14-2.webp"
+  ],
+  "rating": 4.88,
+  "retailKzt": 260000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 205400
+   },
+   {
+    "min": 17,
+    "priceKzt": 163800
+   }
+  ],
+  "seedMembers": 5,
+  "hoursLeft": 10,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 12
+ },
+ {
+  "id": "p15",
+  "title": "Wooden Bathroom Sink With Mirror",
+  "brand": "Bath Trends",
+  "category": "home",
+  "image": "/img/p15-t.webp",
+  "images": [
+   "/img/p15-0.webp",
+   "/img/p15-1.webp",
+   "/img/p15-2.webp"
+  ],
+  "rating": 3.59,
+  "retailKzt": 416000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 324500
+   },
+   {
+    "min": 24,
+    "priceKzt": 262100
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 17,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 10
+ },
+ {
+  "id": "p43",
+  "title": "Decoration Swing",
+  "brand": null,
+  "category": "home",
+  "image": "/img/p43-t.webp",
+  "images": [
+   "/img/p43-0.webp",
+   "/img/p43-1.webp",
+   "/img/p43-2.webp"
+  ],
+  "rating": 3.16,
+  "retailKzt": 31200,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 25000
+   },
+   {
+    "min": 30,
+    "priceKzt": 20000
+   }
+  ],
+  "seedMembers": 9,
+  "hoursLeft": 43,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 15
+ },
+ {
+  "id": "p44",
+  "title": "Family Tree Photo Frame",
+  "brand": null,
+  "category": "home",
+  "image": "/img/p44-t.webp",
+  "images": [
+   "/img/p44-0.webp"
+  ],
+  "rating": 4.53,
+  "retailKzt": 15600,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 12300
+   },
+   {
+    "min": 26,
+    "priceKzt": 10000
+   }
+  ],
+  "seedMembers": 2,
+  "hoursLeft": 10,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 12
+ },
+ {
+  "id": "p45",
+  "title": "House Showpiece Plant",
+  "brand": null,
+  "category": "home",
+  "image": "/img/p45-t.webp",
+  "images": [
+   "/img/p45-0.webp",
+   "/img/p45-1.webp",
+   "/img/p45-2.webp"
+  ],
+  "rating": 4.67,
+  "retailKzt": 20800,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 16400
+   },
+   {
+    "min": 30,
+    "priceKzt": 13100
+   }
+  ],
+  "seedMembers": 9,
+  "hoursLeft": 34,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 16
+ },
+ {
+  "id": "p46",
+  "title": "Plant Pot",
+  "brand": null,
+  "category": "home",
+  "image": "/img/p46-t.webp",
+  "images": [
+   "/img/p46-0.webp",
+   "/img/p46-1.webp",
+   "/img/p46-2.webp"
+  ],
+  "rating": 3.01,
+  "retailKzt": 7800,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 6100
+   },
+   {
+    "min": 26,
+    "priceKzt": 4900
+   }
+  ],
+  "seedMembers": 2,
+  "hoursLeft": 41,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 13
+ },
+ {
+  "id": "p47",
+  "title": "Table Lamp",
+  "brand": null,
+  "category": "home",
+  "image": "/img/p47-t.webp",
+  "images": [
+   "/img/p47-0.webp"
+  ],
+  "rating": 3.55,
+  "retailKzt": 26000,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 22100
+   },
+   {
+    "min": 21,
+    "priceKzt": 16100
+   }
+  ],
+  "seedMembers": 2,
+  "hoursLeft": 9,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 11
+ },
+ {
+  "id": "p48",
+  "title": "Bamboo Spatula",
+  "brand": null,
+  "category": "home",
+  "image": "/img/p48-t.webp",
+  "images": [
+   "/img/p48-0.webp"
+  ],
+  "rating": 3.27,
+  "retailKzt": 4200,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 3600
+   },
+   {
+    "min": 26,
+    "priceKzt": 2600
+   }
+  ],
+  "seedMembers": 3,
+  "hoursLeft": 32,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 14
+ },
+ {
+  "id": "p49",
+  "title": "Black Aluminium Cup",
+  "brand": null,
+  "category": "home",
+  "image": "/img/p49-t.webp",
+  "images": [
+   "/img/p49-0.webp",
+   "/img/p49-1.webp"
+  ],
+  "rating": 4.46,
+  "retailKzt": 3100,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 2600
+   },
+   {
+    "min": 21,
+    "priceKzt": 2100
+   }
+  ],
+  "seedMembers": 3,
+  "hoursLeft": 40,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 12
+ },
+ {
+  "id": "p50",
+  "title": "Black Whisk",
+  "brand": null,
+  "category": "home",
+  "image": "/img/p50-t.webp",
+  "images": [
+   "/img/p50-0.webp"
+  ],
+  "rating": 3.9,
+  "retailKzt": 5200,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 4400
+   },
+   {
+    "min": 26,
+    "priceKzt": 3600
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 23,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 15
+ },
+ {
+  "id": "p51",
+  "title": "Boxed Blender",
+  "brand": null,
+  "category": "home",
+  "image": "/img/p51-t.webp",
+  "images": [
+   "/img/p51-0.webp",
+   "/img/p51-1.webp",
+   "/img/p51-2.webp"
+  ],
+  "rating": 4.56,
+  "retailKzt": 20800,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 17300
+   },
+   {
+    "min": 21,
+    "priceKzt": 14100
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 30,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 13
+ },
+ {
+  "id": "p52",
+  "title": "Carbon Steel Wok",
+  "brand": null,
+  "category": "home",
+  "image": "/img/p52-t.webp",
+  "images": [
+   "/img/p52-0.webp"
+  ],
+  "rating": 4.05,
+  "retailKzt": 15600,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 12900
+   },
+   {
+    "min": 17,
+    "priceKzt": 10500
+   }
+  ],
+  "seedMembers": 3,
+  "hoursLeft": 38,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 10
+ },
+ {
+  "id": "p53",
+  "title": "Chopping Board",
+  "brand": null,
+  "category": "home",
+  "image": "/img/p53-t.webp",
+  "images": [
+   "/img/p53-0.webp"
+  ],
+  "rating": 3.7,
+  "retailKzt": 6800,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 5600
+   },
+   {
+    "min": 21,
+    "priceKzt": 4600
+   }
+  ],
+  "seedMembers": 5,
+  "hoursLeft": 21,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Астана",
+   "Караганда"
+  ],
+  "shipDays": 14
+ },
+ {
+  "id": "p93",
+  "title": "Brown Leather Belt Watch",
+  "brand": "Fashion Timepieces",
+  "category": "fashion",
+  "image": "/img/p93-t.webp",
+  "images": [
+   "/img/p93-0.webp",
+   "/img/p93-1.webp",
+   "/img/p93-2.webp"
+  ],
+  "rating": 4.19,
+  "retailKzt": 46800,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 39800
+   },
+   {
+    "min": 21,
+    "priceKzt": 29000
+   }
+  ],
+  "seedMembers": 7,
+  "hoursLeft": 40,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 13
+ },
+ {
+  "id": "p94",
+  "title": "Longines Master Collection",
+  "brand": "Longines",
+  "category": "fashion",
+  "image": "/img/p94-t.webp",
+  "images": [
+   "/img/p94-0.webp",
+   "/img/p94-1.webp",
+   "/img/p94-2.webp"
+  ],
+  "rating": 3.87,
+  "retailKzt": 780000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 663000
+   },
+   {
+    "min": 17,
+    "priceKzt": 538200
+   }
+  ],
+  "seedMembers": 3,
+  "hoursLeft": 8,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 10
+ },
+ {
+  "id": "p95",
+  "title": "Rolex Cellini Date Black Dial",
+  "brand": "Rolex",
+  "category": "fashion",
+  "image": "/img/p95-t.webp",
+  "images": [
+   "/img/p95-0.webp",
+   "/img/p95-1.webp",
+   "/img/p95-2.webp"
+  ],
+  "rating": 4.97,
+  "retailKzt": 4680000,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 3931200
+   },
+   {
+    "min": 21,
+    "priceKzt": 3229200
+   }
+  ],
+  "seedMembers": 7,
+  "hoursLeft": 31,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 14
+ },
+ {
+  "id": "p96",
+  "title": "Rolex Cellini Moonphase",
+  "brand": "Rolex",
+  "category": "fashion",
+  "image": "/img/p96-t.webp",
+  "images": [
+   "/img/p96-0.webp",
+   "/img/p96-1.webp",
+   "/img/p96-2.webp"
+  ],
+  "rating": 2.58,
+  "retailKzt": 6760000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 5678400
+   },
+   {
+    "min": 17,
+    "priceKzt": 4596800
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 39,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 11
+ },
+ {
+  "id": "p97",
+  "title": "Rolex Datejust",
+  "brand": "Rolex",
+  "category": "fashion",
+  "image": "/img/p97-t.webp",
+  "images": [
+   "/img/p97-0.webp",
+   "/img/p97-1.webp",
+   "/img/p97-2.webp"
+  ],
+  "rating": 3.66,
+  "retailKzt": 5720000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 4747600
+   },
+   {
+    "min": 17,
+    "priceKzt": 3889600
+   }
+  ],
+  "seedMembers": 3,
+  "hoursLeft": 22,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 15
+ },
+ {
+  "id": "p98",
+  "title": "Rolex Submariner Watch",
+  "brand": "Rolex",
+  "category": "fashion",
+  "image": "/img/p98-t.webp",
+  "images": [
+   "/img/p98-0.webp",
+   "/img/p98-1.webp",
+   "/img/p98-2.webp"
+  ],
+  "rating": 2.69,
+  "retailKzt": 7280000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 6042400
+   },
+   {
+    "min": 17,
+    "priceKzt": 4877600
+   }
+  ],
+  "seedMembers": 5,
+  "hoursLeft": 30,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 12
+ },
+ {
+  "id": "p172",
+  "title": "Blue Women's Handbag",
+  "brand": "Fashionista",
+  "category": "fashion",
+  "image": "/img/p172-t.webp",
+  "images": [
+   "/img/p172-0.webp",
+   "/img/p172-1.webp",
+   "/img/p172-2.webp"
+  ],
+  "rating": 2.92,
+  "retailKzt": 26000,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 21800
+   },
+   {
+    "min": 26,
+    "priceKzt": 17700
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 31,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 13
+ },
+ {
+  "id": "p173",
+  "title": "Heshe Women's Leather Bag",
+  "brand": "Heshe",
+  "category": "fashion",
+  "image": "/img/p173-t.webp",
+  "images": [
+   "/img/p173-0.webp",
+   "/img/p173-1.webp",
+   "/img/p173-2.webp"
+  ],
+  "rating": 4.92,
+  "retailKzt": 67600,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 56100
+   },
+   {
+    "min": 30,
+    "priceKzt": 46000
+   }
+  ],
+  "seedMembers": 9,
+  "hoursLeft": 14,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 7
+ },
+ {
+  "id": "p174",
+  "title": "Prada Women Bag",
+  "brand": "Prada",
+  "category": "fashion",
+  "image": "/img/p174-t.webp",
+  "images": [
+   "/img/p174-0.webp",
+   "/img/p174-1.webp",
+   "/img/p174-2.webp"
+  ],
+  "rating": 2.71,
+  "retailKzt": 312000,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 259000
+   },
+   {
+    "min": 26,
+    "priceKzt": 209000
+   }
+  ],
+  "seedMembers": 5,
+  "hoursLeft": 22,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 14
+ },
+ {
+  "id": "p175",
+  "title": "White Faux Leather Backpack",
+  "brand": "Urban Chic",
+  "category": "fashion",
+  "image": "/img/p175-t.webp",
+  "images": [
+   "/img/p175-0.webp",
+   "/img/p175-1.webp",
+   "/img/p175-2.webp"
+  ],
+  "rating": 3.36,
+  "retailKzt": 20800,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 17100
+   },
+   {
+    "min": 21,
+    "priceKzt": 13900
+   }
+  ],
+  "seedMembers": 5,
+  "hoursLeft": 29,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 12
+ },
+ {
+  "id": "p176",
+  "title": "Women Handbag Black",
+  "brand": "Elegance Collection",
+  "category": "fashion",
+  "image": "/img/p176-t.webp",
+  "images": [
+   "/img/p176-0.webp",
+   "/img/p176-1.webp",
+   "/img/p176-2.webp"
+  ],
+  "rating": 2.89,
+  "retailKzt": 31200,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 25600
+   },
+   {
+    "min": 26,
+    "priceKzt": 20600
+   }
+  ],
+  "seedMembers": 6,
+  "hoursLeft": 13,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 15
+ },
+ {
+  "id": "p177",
+  "title": "Black Women's Gown",
+  "brand": null,
+  "category": "fashion",
+  "image": "/img/p177-t.webp",
+  "images": [
+   "/img/p177-0.webp",
+   "/img/p177-1.webp",
+   "/img/p177-2.webp"
+  ],
+  "rating": 3.64,
+  "retailKzt": 67600,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 54800
+   },
+   {
+    "min": 17,
+    "priceKzt": 44600
+   }
+  ],
+  "seedMembers": 5,
+  "hoursLeft": 20,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 13
+ },
+ {
+  "id": "p178",
+  "title": "Corset Leather With Skirt",
+  "brand": null,
+  "category": "fashion",
+  "image": "/img/p178-t.webp",
+  "images": [
+   "/img/p178-0.webp",
+   "/img/p178-1.webp",
+   "/img/p178-2.webp"
+  ],
+  "rating": 3.05,
+  "retailKzt": 46800,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 37900
+   },
+   {
+    "min": 17,
+    "priceKzt": 30400
+   }
+  ],
+  "seedMembers": 3,
+  "hoursLeft": 28,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 10
+ },
+ {
+  "id": "p179",
+  "title": "Corset With Black Skirt",
+  "brand": null,
+  "category": "fashion",
+  "image": "/img/p179-t.webp",
+  "images": [
+   "/img/p179-0.webp",
+   "/img/p179-1.webp",
+   "/img/p179-2.webp"
+  ],
+  "rating": 4.52,
+  "retailKzt": 41600,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 33300
+   },
+   {
+    "min": 17,
+    "priceKzt": 27000
+   }
+  ],
+  "seedMembers": 2,
+  "hoursLeft": 11,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 14
+ },
+ {
+  "id": "p180",
+  "title": "Dress Pea",
+  "brand": null,
+  "category": "fashion",
+  "image": "/img/p180-t.webp",
+  "images": [
+   "/img/p180-0.webp",
+   "/img/p180-1.webp",
+   "/img/p180-2.webp"
+  ],
+  "rating": 4.88,
+  "retailKzt": 26000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 20800
+   },
+   {
+    "min": 17,
+    "priceKzt": 16600
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 19,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 11
+ },
+ {
+  "id": "p181",
+  "title": "Marni Red & Black Suit",
+  "brand": null,
+  "category": "fashion",
+  "image": "/img/p181-t.webp",
+  "images": [
+   "/img/p181-0.webp",
+   "/img/p181-1.webp",
+   "/img/p181-2.webp"
+  ],
+  "rating": 4.48,
+  "retailKzt": 93600,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 73900
+   },
+   {
+    "min": 17,
+    "priceKzt": 59900
+   }
+  ],
+  "seedMembers": 3,
+  "hoursLeft": 42,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 14
+ },
+ {
+  "id": "p83",
+  "title": "Blue & Black Check Shirt",
+  "brand": "Fashion Trends",
+  "category": "fashion",
+  "image": "/img/p83-t.webp",
+  "images": [
+   "/img/p83-0.webp",
+   "/img/p83-1.webp",
+   "/img/p83-2.webp"
+  ],
+  "rating": 3.64,
+  "retailKzt": 15600,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 12900
+   },
+   {
+    "min": 30,
+    "priceKzt": 10500
+   }
+  ],
+  "seedMembers": 9,
+  "hoursLeft": 22,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 14
+ },
+ {
+  "id": "p84",
+  "title": "Gigabyte Aorus Men Tshirt",
+  "brand": "Gigabyte",
+  "category": "fashion",
+  "image": "/img/p84-t.webp",
+  "images": [
+   "/img/p84-0.webp",
+   "/img/p84-1.webp",
+   "/img/p84-2.webp"
+  ],
+  "rating": 3.18,
+  "retailKzt": 13000,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 10700
+   },
+   {
+    "min": 24,
+    "priceKzt": 8700
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 45,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 7
+ },
+ {
+  "id": "p85",
+  "title": "Man Plaid Shirt",
+  "brand": "Classic Wear",
+  "category": "fashion",
+  "image": "/img/p85-t.webp",
+  "images": [
+   "/img/p85-0.webp",
+   "/img/p85-1.webp",
+   "/img/p85-2.webp"
+  ],
+  "rating": 3.46,
+  "retailKzt": 18200,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 14900
+   },
+   {
+    "min": 30,
+    "priceKzt": 12000
+   }
+  ],
+  "seedMembers": 9,
+  "hoursLeft": 13,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 15
+ },
+ {
+  "id": "p86",
+  "title": "Man Short Sleeve Shirt",
+  "brand": "Casual Comfort",
+  "category": "fashion",
+  "image": "/img/p86-t.webp",
+  "images": [
+   "/img/p86-0.webp",
+   "/img/p86-1.webp",
+   "/img/p86-2.webp"
+  ],
+  "rating": 2.9,
+  "retailKzt": 10400,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 8400
+   },
+   {
+    "min": 26,
+    "priceKzt": 6900
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 20,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 12
+ },
+ {
+  "id": "p87",
+  "title": "Men Check Shirt",
+  "brand": "Urban Chic",
+  "category": "fashion",
+  "image": "/img/p87-t.webp",
+  "images": [
+   "/img/p87-0.webp",
+   "/img/p87-1.webp",
+   "/img/p87-2.webp"
+  ],
+  "rating": 2.72,
+  "retailKzt": 14600,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 11700
+   },
+   {
+    "min": 30,
+    "priceKzt": 9500
+   }
+  ],
+  "seedMembers": 9,
+  "hoursLeft": 44,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 16
+ },
+ {
+  "id": "p154",
+  "title": "Black Sun Glasses",
+  "brand": "Fashion Shades",
+  "category": "fashion",
+  "image": "/img/p154-t.webp",
+  "images": [
+   "/img/p154-0.webp",
+   "/img/p154-1.webp",
+   "/img/p154-2.webp"
+  ],
+  "rating": 4.41,
+  "retailKzt": 15600,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 13300
+   },
+   {
+    "min": 21,
+    "priceKzt": 9700
+   }
+  ],
+  "seedMembers": 7,
+  "hoursLeft": 24,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 7
+ },
+ {
+  "id": "p155",
+  "title": "Classic Sun Glasses",
+  "brand": "Fashion Shades",
+  "category": "fashion",
+  "image": "/img/p155-t.webp",
+  "images": [
+   "/img/p155-0.webp",
+   "/img/p155-1.webp",
+   "/img/p155-2.webp"
+  ],
+  "rating": 3.86,
+  "retailKzt": 13000,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 11100
+   },
+   {
+    "min": 26,
+    "priceKzt": 9000
+   }
+  ],
+  "seedMembers": 7,
+  "hoursLeft": 8,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 10
+ },
+ {
+  "id": "p156",
+  "title": "Green and Black Glasses",
+  "brand": "Fashion Shades",
+  "category": "fashion",
+  "image": "/img/p156-t.webp",
+  "images": [
+   "/img/p156-0.webp",
+   "/img/p156-1.webp",
+   "/img/p156-2.webp"
+  ],
+  "rating": 4.55,
+  "retailKzt": 18200,
+  "tiers": [
+   {
+    "min": 8,
+    "priceKzt": 15300
+   },
+   {
+    "min": 21,
+    "priceKzt": 12600
+   }
+  ],
+  "seedMembers": 7,
+  "hoursLeft": 15,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 8
+ },
+ {
+  "id": "p157",
+  "title": "Party Glasses",
+  "brand": "Fashion Fun",
+  "category": "fashion",
+  "image": "/img/p157-t.webp",
+  "images": [
+   "/img/p157-0.webp",
+   "/img/p157-1.webp",
+   "/img/p157-2.webp"
+  ],
+  "rating": 2.79,
+  "retailKzt": 10400,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 8700
+   },
+   {
+    "min": 17,
+    "priceKzt": 7100
+   }
+  ],
+  "seedMembers": 3,
+  "hoursLeft": 23,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 15
+ },
+ {
+  "id": "p158",
+  "title": "Sunglasses",
+  "brand": "Fashion Shades",
+  "category": "fashion",
+  "image": "/img/p158-t.webp",
+  "images": [
+   "/img/p158-0.webp",
+   "/img/p158-1.webp",
+   "/img/p158-2.webp"
+  ],
+  "rating": 3.02,
+  "retailKzt": 12000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 10000
+   },
+   {
+    "min": 17,
+    "priceKzt": 8200
+   }
+  ],
+  "seedMembers": 2,
+  "hoursLeft": 6,
+  "marketplace": "Taobao",
+  "hotCities": [
+   "Алматы",
+   "Астана",
+   "Шымкент"
+  ],
+  "shipDays": 9
+ },
+ {
+  "id": "p137",
+  "title": "American Football",
+  "brand": null,
+  "category": "sport",
+  "image": "/img/p137-t.webp",
+  "images": [
+   "/img/p137-0.webp"
+  ],
+  "rating": 4.91,
+  "retailKzt": 10400,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 8100
+   },
+   {
+    "min": 17,
+    "priceKzt": 6600
+   }
+  ],
+  "seedMembers": 2,
+  "hoursLeft": 41,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Астана",
+   "Алматы"
+  ],
+  "shipDays": 14
+ },
+ {
+  "id": "p138",
+  "title": "Baseball Ball",
+  "brand": null,
+  "category": "sport",
+  "image": "/img/p138-t.webp",
+  "images": [
+   "/img/p138-0.webp"
+  ],
+  "rating": 2.57,
+  "retailKzt": 4700,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 3700
+   },
+   {
+    "min": 17,
+    "priceKzt": 2900
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 9,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Астана",
+   "Алматы"
+  ],
+  "shipDays": 11
+ },
+ {
+  "id": "p139",
+  "title": "Baseball Glove",
+  "brand": null,
+  "category": "sport",
+  "image": "/img/p139-t.webp",
+  "images": [
+   "/img/p139-0.webp",
+   "/img/p139-1.webp",
+   "/img/p139-2.webp"
+  ],
+  "rating": 3.96,
+  "retailKzt": 13000,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 11100
+   },
+   {
+    "min": 17,
+    "priceKzt": 8100
+   }
+  ],
+  "seedMembers": 3,
+  "hoursLeft": 32,
+  "marketplace": "AliExpress",
+  "hotCities": [
+   "Астана",
+   "Алматы"
+  ],
+  "shipDays": 15
+ },
+ {
+  "id": "p140",
+  "title": "Basketball",
+  "brand": null,
+  "category": "sport",
+  "image": "/img/p140-t.webp",
+  "images": [
+   "/img/p140-0.webp"
+  ],
+  "rating": 4.66,
+  "retailKzt": 7800,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 6600
+   },
+   {
+    "min": 17,
+    "priceKzt": 5400
+   }
+  ],
+  "seedMembers": 5,
+  "hoursLeft": 40,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Астана",
+   "Алматы"
+  ],
+  "shipDays": 12
+ },
+ {
+  "id": "p141",
+  "title": "Basketball Rim",
+  "brand": null,
+  "category": "sport",
+  "image": "/img/p141-t.webp",
+  "images": [
+   "/img/p141-0.webp"
+  ],
+  "rating": 4.6,
+  "retailKzt": 20800,
+  "tiers": [
+   {
+    "min": 10,
+    "priceKzt": 17500
+   },
+   {
+    "min": 24,
+    "priceKzt": 14400
+   }
+  ],
+  "seedMembers": 4,
+  "hoursLeft": 7,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Астана",
+   "Алматы"
+  ],
+  "shipDays": 9
+ },
+ {
+  "id": "p142",
+  "title": "Cricket Ball",
+  "brand": null,
+  "category": "sport",
+  "image": "/img/p142-t.webp",
+  "images": [
+   "/img/p142-0.webp"
+  ],
+  "rating": 3.53,
+  "retailKzt": 6800,
+  "tiers": [
+   {
+    "min": 6,
+    "priceKzt": 5700
+   },
+   {
+    "min": 16,
+    "priceKzt": 4600
+   }
+  ],
+  "seedMembers": 5,
+  "hoursLeft": 31,
+  "marketplace": "Temu",
+  "hotCities": [
+   "Астана",
+   "Алматы"
+  ],
+  "shipDays": 13
+ }
+]
