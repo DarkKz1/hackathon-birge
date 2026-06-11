@@ -40,6 +40,7 @@ export default function Feed() {
   const [cat, setCat] = useState<Category | 'all'>('all')
   const [q, setQ] = useState('')
   const [semHits, setSemHits] = useState<Map<string, number> | null>(null)
+  const [searching, setSearching] = useState(false)
   const searchSeq = useRef(0)
 
   // семантический поиск: debounce 350мс, при недоступности — substring fallback
@@ -48,11 +49,14 @@ export default function Feed() {
     const seq = ++searchSeq.current
     if (query.length < 3) {
       setSemHits(null)
+      setSearching(false)
       return
     }
     const t = setTimeout(async () => {
+      setSearching(true)
       const hits = await semanticSearch(query)
       if (searchSeq.current !== seq) return
+      setSearching(false)
       setSemHits(hits ? new Map(hits.map((h) => [h.id, h.score])) : null)
     }, 350)
     return () => clearTimeout(t)
@@ -106,7 +110,10 @@ export default function Feed() {
             placeholder={tr('feed_search')}
             className="w-full bg-card border border-line rounded-2xl px-4 py-3 text-[15px] outline-none focus:border-ink"
           />
-          {q && semHits && (
+          {q && searching && (
+            <span className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-violet border-t-transparent animate-spin" />
+          )}
+          {q && !searching && semHits && (
             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] font-bold text-violet bg-violet/10 rounded-full px-2 py-1">
               ✨ {tr('search_ai')}
             </span>

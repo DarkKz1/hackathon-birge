@@ -67,7 +67,7 @@ export async function semanticSearch(query: string): Promise<SemanticHit[] | nul
       body: JSON.stringify({
         query,
         mode: 'llm-rank',
-        items: catalog.map((p) => ({ id: p.id, title: p.title, category: p.category })),
+        items: catalog.map((p) => ({ id: p.id, title: p.title, category: p.category, priceKzt: p.tiers[0].priceKzt })),
       }),
     })
     if (!r.ok) return null
