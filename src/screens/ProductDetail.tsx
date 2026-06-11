@@ -9,6 +9,8 @@ import { hourUnit, kzt, pct, timeLeft } from '../lib/format'
 import { recommend } from '../lib/recommend'
 import { predictFill } from '../lib/predict'
 import { districtGroup } from '../lib/esim'
+import { kaspiOf, kaspiStamp } from '../lib/kaspi'
+import { useCountUp } from '../lib/useCountUp'
 
 function Confetti() {
   const pieces = useMemo(
@@ -77,6 +79,7 @@ export default function ProductDetail() {
 
   const m = p ? membersOf(p) : 0
   const tier1Done = p ? m >= p.tiers[0].min : false
+  const animM = useCountUp(m) // плавная анимация счётчика участников
 
   // конфетти — только в МОМЕНТ сбора группы (переход false→true), не при каждом открытии
   const prevDone = useRef<boolean | null>(null)
@@ -209,7 +212,7 @@ export default function ProductDetail() {
           <div className="mt-5 flex items-center justify-between">
             <Avatars count={m} seed={parseInt(p.id.slice(1)) || 1} you={g.joined} youLabel={lang === 'kk' ? 'Сіз' : 'Вы'} />
             <div className="text-[13px] font-bold tabular-nums">
-              {Math.min(m, goal.min)}<span className="text-ink-3">/{goal.min} {tr('members')}</span>
+              {Math.min(animM, goal.min)}<span className="text-ink-3">/{goal.min} {tr('members')}</span>
             </div>
           </div>
           <div className="mt-2.5">
@@ -250,6 +253,36 @@ export default function ProductDetail() {
             </div>
           )}
         </div>
+
+        {/* реальная цена Kaspi — кликабельная, проверяемая (не mock) */}
+        {(() => {
+          const kp = kaspiOf(p.id)
+          if (!kp) return null
+          const diff = kp.priceKzt - price
+          if (diff <= 0) return null
+          return (
+            <a
+              href={kp.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 rise rise-1 flex items-center gap-3 rounded-3xl border border-line bg-card p-4 active:scale-[0.98] transition-transform"
+            >
+              <div className="w-10 h-10 rounded-xl bg-[#ff3b30] text-white font-display font-bold text-[15px] flex items-center justify-center shrink-0">K</div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[12px] font-semibold text-ink-3">
+                  {lang === 'kk' ? 'Kaspi-де қазір' : 'Сейчас в Kaspi'} · {kaspiStamp(lang)}
+                </div>
+                <div className="text-[15px] font-extrabold mt-0.5">
+                  {kzt(kp.priceKzt)} <span className="text-lime-deep text-[13px] font-bold">→ {kzt(price)} {lang === 'kk' ? 'топта' : 'в группе'}</span>
+                </div>
+              </div>
+              <div className="text-right shrink-0">
+                <div className="text-[11px] text-ink-3 font-semibold">{lang === 'kk' ? 'арзан' : 'дешевле'}</div>
+                <div className="text-[14px] font-extrabold text-coral">−{kzt(diff)}</div>
+              </div>
+            </a>
+          )
+        })()}
 
         {/* district thermometer — eSIM killer feature (Geofencing + Region Device Count) */}
         {!expired && !isGuest && (() => {

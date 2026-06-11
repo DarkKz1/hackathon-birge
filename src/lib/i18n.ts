@@ -138,6 +138,7 @@ const dict = {
 
   // toasts
   toast_joined_other: ['присоединилась к группе', 'топқа қосылды'],
+  toast_joined_named: ['вступил(а) в группу', 'тобына қосылды'],
 } as const
 
 export type TKey = keyof typeof dict

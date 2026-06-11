@@ -137,6 +137,33 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile.lang])
 
+  // ambient-активность: «живой» поток платформы (визуальное оживление, не реальные юзеры —
+  // НЕ меняет счётчики конкретных групп, только социальное доказательство)
+  useEffect(() => {
+    if (!profile.onboarded) return
+    let alive = true
+    const cities = ['Алматы', 'Астана', 'Шымкент', 'Караганда', 'Актобе']
+    const tick = () => {
+      if (!alive) return
+      const seed = Date.now()
+      const name = fakeName(seed % 12)
+      const city = cities[seed % cities.length]
+      const p = catalog[seed % catalog.length]
+      toast(`${name} (${city}) ${t('toast_joined_named', profile.lang)} «${p.title.slice(0, 24)}»`, 'zap')
+      schedule()
+    }
+    let timer: ReturnType<typeof setTimeout>
+    const schedule = () => {
+      timer = setTimeout(tick, 9000 + Math.floor((Date.now() % 8) * 1000)) // 9–16с
+    }
+    schedule()
+    return () => {
+      alive = false
+      clearTimeout(timer)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profile.onboarded, profile.lang])
+
   const membersOf = (p: Product) => p.seedMembers + (joins.get(p.id)?.length ?? 0)
 
   const groupOf = (p: Product): GroupView => {

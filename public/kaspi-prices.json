@@ -1,0 +1,62 @@
+{
+ "fetchedAt": "2026-06-11T16:06:46.495Z",
+ "city": "Алматы",
+ "source": "kaspi.kz",
+ "items": {
+  "p123": {
+   "title": "Apple iPhone 13 Pro 256Gb NanoSIM+eSIM серый",
+   "priceKzt": 500000,
+   "url": "https://kaspi.kz/shop/p/apple-iphone-13-pro-256gb-nanosim-esim-seryi-102298772/?c=750000000"
+  },
+  "p78": {
+   "title": "Apple MacBook Pro 14 2024 14.2\" / 24 Гб / SSD 512 Гб / macOS / MX2H3",
+   "priceKzt": 1147810,
+   "url": "https://kaspi.kz/shop/p/apple-macbook-pro-14-2024-14-2-24-gb-ssd-512-gb-macos-mx2h3-137220149/?c=750000000"
+  },
+  "p100": {
+   "title": "Наушники Apple AirPods 4 белый",
+   "priceKzt": 62742,
+   "url": "https://kaspi.kz/shop/p/naushniki-apple-airpods-4-belyi-124333372/?c=750000000"
+  },
+  "p103": {
+   "title": "Apple HomePod mini черный",
+   "priceKzt": 99990,
+   "url": "https://kaspi.kz/shop/p/apple-homepod-mini-chernyi-100983175/?c=750000000"
+  },
+  "p160": {
+   "title": "Samsung Galaxy Tab A11 8.7 дюйм 8 Гб/128 Гб серый",
+   "priceKzt": 74900,
+   "url": "https://kaspi.kz/shop/p/samsung-galaxy-tab-a11-8-7-djuim-8-gb-128-gb-seryi-146913692/?c=750000000"
+  },
+  "p6": {
+   "title": "Calvin Klein CK One туалетная вода EDT 100 мл, унисекс",
+   "priceKzt": 21973,
+   "url": "https://kaspi.kz/shop/p/calvin-klein-ck-one-tualetnaja-voda-edt-100-ml-uniseks-17301037/?c=750000000"
+  },
+  "p8": {
+   "title": "Dior J'Adore парфюмерная вода EDP 50 мл, для женщин",
+   "priceKzt": 39990,
+   "url": "https://kaspi.kz/shop/p/dior-j-adore-parfjumernaja-voda-edp-50-ml-dlja-zhenschin-17301904/?c=750000000"
+  },
+  "p10": {
+   "title": "GUCCI Bloom Parfum духи PARFUM 30 мл, для женщин",
+   "priceKzt": 41100,
+   "url": "https://kaspi.kz/shop/p/gucci-bloom-parfum-duhi-parfum-30-ml-dlja-zhenschin-140637825/?c=750000000"
+  },
+  "p7": {
+   "title": "CHANEL Coco Mademoiselle духи PARFUM 2 мл, для женщин",
+   "priceKzt": 7999,
+   "url": "https://kaspi.kz/shop/p/chanel-coco-mademoiselle-duhi-parfum-2-ml-dlja-zhenschin-132136489/?c=750000000"
+  },
+  "p1": {
+   "title": "Тушь для ресниц Essence Lash Princess подкручивающая черный",
+   "priceKzt": 1698,
+   "url": "https://kaspi.kz/shop/p/tush-dlja-resnits-essence-lash-princess-podkruchivajuschaja-chernyi-17400336/?c=750000000"
+  },
+  "p119": {
+   "title": "Olay Shea Butter гель 650 мл",
+   "priceKzt": 15100,
+   "url": "https://kaspi.kz/shop/p/olay-shea-butter-gel-650-ml-105851572/?c=750000000"
+  }
+ }
+}
