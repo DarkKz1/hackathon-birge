@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { Check } from 'lucide-react'
 import { useStore } from '../lib/store'
 import { kzt, pct } from '../lib/format'
 import type { Reco } from '../lib/types'
@@ -33,8 +34,8 @@ export default function ProductCard({ reco, delay = 0 }: { reco: Reco; delay?: n
           −{pct(p.retailKzt, price)}%
         </div>
         {joined && (
-          <div className="absolute bottom-2 left-2 rounded-md bg-lime text-ink text-[10px] font-extrabold px-1.5 py-0.5">
-            ✓ {tr('joined_badge')}
+          <div className="absolute bottom-2 left-2 inline-flex items-center gap-0.5 rounded-md bg-lime text-ink text-[10px] font-extrabold px-1.5 py-0.5">
+            <Check size={10} strokeWidth={3.5} /> {tr('joined_badge')}
           </div>
         )}
       </div>
@@ -50,12 +51,10 @@ export default function ProductCard({ reco, delay = 0 }: { reco: Reco; delay?: n
           <span className="text-[11px] font-bold text-ink-2 tabular-nums">{m}/{goal.min}</span>
         </div>
         {reco.reasons.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-1">
-            {reco.reasons.map((r, i) => (
-              <span key={i} className="text-[10px] font-semibold text-lime-deep bg-lime/20 rounded-full px-2 py-0.5">
-                {r}
-              </span>
-            ))}
+          <div className="mt-2">
+            <span className="inline-block text-[10px] font-semibold text-ink-3 bg-paper border border-line rounded-full px-2 py-0.5 max-w-full truncate">
+              {reco.reasons[0]}
+            </span>
           </div>
         )}
       </div>

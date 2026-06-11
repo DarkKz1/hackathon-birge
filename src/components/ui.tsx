@@ -1,6 +1,17 @@
 import { NavLink } from 'react-router-dom'
+import { Check, Link2, Package, Zap } from 'lucide-react'
 import { useStore } from '../lib/store'
 import { fakeName, initials } from '../lib/format'
+
+// единый набор иконок для тостов — вместо эмодзи
+const TOAST_ICONS = {
+  zap: Zap,
+  check: Check,
+  link: Link2,
+  package: Package,
+} as const
+
+export type ToastIcon = keyof typeof TOAST_ICONS
 
 export function Logo({ dark = false, size = 'text-2xl' }: { dark?: boolean; size?: string }) {
   return (
@@ -100,15 +111,18 @@ export function Toasts() {
   const { toasts } = useStore()
   return (
     <div className="fixed top-3 left-1/2 -translate-x-1/2 z-50 w-[min(400px,92vw)] space-y-2 pointer-events-none">
-      {toasts.map((t) => (
-        <div
-          key={t.id}
-          className="rise bg-ink text-paper rounded-2xl px-4 py-3 text-[14px] font-semibold shadow-xl flex items-center gap-2"
-        >
-          {t.emoji && <span>{t.emoji}</span>}
-          <span>{t.text}</span>
-        </div>
-      ))}
+      {toasts.map((t) => {
+        const Icon = t.emoji && t.emoji in TOAST_ICONS ? TOAST_ICONS[t.emoji as ToastIcon] : null
+        return (
+          <div
+            key={t.id}
+            className="rise bg-ink text-paper rounded-2xl px-4 py-3 text-[14px] font-semibold shadow-xl flex items-center gap-2.5"
+          >
+            {Icon && <Icon size={16} className="text-lime shrink-0" />}
+            <span>{t.text}</span>
+          </div>
+        )
+      })}
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import QRCode from 'qrcode'
+import { ArrowDownRight, Check, ChevronLeft, Clock, Lock, QrCode, Share2, ShieldCheck, TrendingUp, Undo2 } from 'lucide-react'
 import { productById, useStore } from '../lib/store'
 import { Avatars, Button, EsimBadge, ProgressBar } from '../components/ui'
 import { MarketBadge } from '../components/ProductCard'
@@ -102,9 +103,9 @@ export default function ProductDetail() {
     if (g.joined) return
     joinGroup(p, isGuest ? guestName : undefined)
     setSheet(false)
-    toast(tr('join_success'), '🎉')
+    toast(tr('join_success'), 'check')
     if (m + 1 >= p.tiers[0].min) {
-      setTimeout(() => toast(tr('group_complete'), '📦'), 1200)
+      setTimeout(() => toast(tr('group_complete'), 'package'), 1200)
     }
   }
 
@@ -116,7 +117,7 @@ export default function ProductDetail() {
         return
       }
       await navigator.clipboard.writeText(url)
-      toast(tr('invite_copied'), '🔗')
+      toast(tr('invite_copied'), 'link')
     } catch {
       /* пользователь отменил share / clipboard недоступен */
     }
@@ -147,7 +148,7 @@ export default function ProductDetail() {
           onClick={() => nav(-1)}
           className="absolute top-[max(env(safe-area-inset-top),16px)] left-4 w-10 h-10 rounded-full bg-ink/85 text-paper flex items-center justify-center backdrop-blur active:scale-90 transition-transform"
         >
-          ←
+          <ChevronLeft size={20} />
         </button>
         <div className="absolute top-[max(env(safe-area-inset-top),16px)] right-4 flex gap-2 items-center">
           <MarketBadge name={p.marketplace} />
@@ -156,11 +157,7 @@ export default function ProductDetail() {
             className="w-10 h-10 rounded-full bg-ink/85 text-paper flex items-center justify-center backdrop-blur active:scale-90 transition-transform"
             aria-label="QR"
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" />
-              <rect x="3" y="14" width="7" height="7" rx="1.5" />
-              <path d="M14 14h3v3h-3zM18 18h3v3h-3z" />
-            </svg>
+            <QrCode size={18} />
           </button>
         </div>
         <div className="absolute bottom-3 left-4 rounded-lg bg-coral text-white text-[14px] font-extrabold px-2.5 py-1">
@@ -186,7 +183,7 @@ export default function ProductDetail() {
         {/* expired banner */}
         {expired && (
           <div className="mt-4 rounded-2xl bg-coral/10 border border-coral/30 px-4 py-3 text-[13px] font-semibold text-coral rise">
-            ↩️ {tr('expired_banner')}
+            <span className="flex items-start gap-2"><Undo2 size={16} className="shrink-0 mt-0.5" />{tr('expired_banner')}</span>
           </div>
         )}
 
@@ -222,11 +219,13 @@ export default function ProductDetail() {
               {expired
                 ? tr('status_expired')
                 : tier1Done
-                  ? `${tr('group_complete').split('!')[0]}! 🎉`
+                  ? `${tr('group_complete').split('!')[0]}!`
                   : `${tr('need_more')}: ${goal.min - m}`}
             </span>
             {!expired && (
-              <span className="text-coral whitespace-nowrap">⏱ {tr('time_left')}: {timeLeft(g.deadline, lang)}</span>
+              <span className="text-coral whitespace-nowrap inline-flex items-center gap-1">
+                <Clock size={12} /> {timeLeft(g.deadline, lang)}
+              </span>
             )}
           </div>
 
@@ -234,16 +233,18 @@ export default function ProductDetail() {
           {!tier1Done && !expired && (() => {
             const { prob, etaHours } = predictFill(p, m, g.deadline)
             return (
-              <div className="mt-3 inline-flex items-center gap-1.5 bg-violet/10 text-violet rounded-full px-3 py-1.5 text-[12px] font-bold">
-                📈 {tr('predict_label')} · {prob}% · {tr('predict_eta')} ~{etaHours}{hourUnit(lang)}
+              <div className="mt-2.5 flex items-center gap-1.5 text-[12px] font-semibold text-ink-3">
+                <TrendingUp size={13} className="text-violet" />
+                {tr('predict_label')}: {prob}% · ~{etaHours}{hourUnit(lang)}
               </div>
             )
           })()}
 
           {/* next tier teaser */}
           {!tier2Done && !expired && (
-            <div className="mt-4 rounded-2xl bg-paper border border-dashed border-ink-3/40 px-4 py-3 text-[12px] font-semibold text-ink-2">
-              💡 {p.tiers[1].min} {tr('members')} {tr('next_tier')} <b className="text-ink">{kzt(p.tiers[1].priceKzt)}</b> (−{pct(p.retailKzt, p.tiers[1].priceKzt)}%)
+            <div className="mt-4 flex items-start gap-2 rounded-2xl bg-paper border border-dashed border-ink-3/40 px-4 py-3 text-[12px] font-semibold text-ink-2">
+              <ArrowDownRight size={14} className="shrink-0 mt-0.5 text-lime-deep" />
+              <span>{p.tiers[1].min} {tr('members')} {tr('next_tier')} <b className="text-ink">{kzt(p.tiers[1].priceKzt)}</b> (−{pct(p.retailKzt, p.tiers[1].priceKzt)}%)</span>
             </div>
           )}
         </div>
@@ -274,7 +275,7 @@ export default function ProductDetail() {
             ))}
           </div>
           <div className="mt-4 pt-3 border-t border-white/10 flex items-center gap-2 text-[11px] text-paper/50">
-            <EsimBadge compact /> {tr('esim_what')}
+            <EsimBadge compact /> {tr('esim_short')}
           </div>
         </div>
 
@@ -283,19 +284,19 @@ export default function ProductDetail() {
           onClick={invite}
           className="mt-4 w-full rise rise-4 rounded-2xl border-2 border-dashed border-violet/50 text-violet font-bold text-[14px] py-3.5 active:scale-[0.97] transition-transform"
         >
-          🤝 {tr('invite')}
+          <span className="inline-flex items-center justify-center gap-2"><Share2 size={15} />{tr('invite')}</span>
         </button>
       </div>
 
       {/* sticky CTA */}
       <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-card/95 backdrop-blur-lg border-t border-line px-5 pt-3 pb-[max(env(safe-area-inset-bottom),16px)] z-40">
         {expired ? (
-          <div className="w-full rounded-2xl py-4 bg-line text-ink-3 font-bold text-[16px] text-center">
-            ↩️ {tr('status_expired')}
+          <div className="w-full rounded-2xl py-4 bg-line text-ink-3 font-bold text-[15px] text-center inline-flex items-center justify-center gap-2">
+            <Undo2 size={16} /> {tr('status_expired')}
           </div>
         ) : g.joined ? (
           <div className="w-full rounded-2xl py-4 bg-lime/25 text-lime-deep font-bold text-[16px] text-center">
-            ✓ {tr('joined_badge')} · {kzt(price)}
+            <span className="inline-flex items-center justify-center gap-2"><Check size={16} strokeWidth={3} /> {tr('joined_badge')} · {kzt(price)}</span>
           </div>
         ) : full ? (
           <div className="w-full rounded-2xl py-4 bg-line text-ink-2 font-bold text-[16px] text-center">
@@ -343,10 +344,10 @@ export default function ProductDetail() {
             )}
 
             <div className="mt-4 space-y-2.5 text-[13px] font-medium text-ink-2">
-              <div className="flex gap-2.5 items-start"><span>🔒</span>{tr('join_hold')}</div>
-              <div className="flex gap-2.5 items-start"><span>↩️</span>{tr('join_refund')}</div>
+              <div className="flex gap-2.5 items-start"><Lock size={15} className="shrink-0 mt-0.5 text-ink-3" />{tr('join_hold')}</div>
+              <div className="flex gap-2.5 items-start"><Undo2 size={15} className="shrink-0 mt-0.5 text-ink-3" />{tr('join_refund')}</div>
               <div className="flex gap-2.5 items-start">
-                <span>🛡</span>
+                <ShieldCheck size={15} className="shrink-0 mt-0.5 text-ink-3" />
                 {isGuest ? `${tr('guest_badge')} · ${tr('guest_note')}` : `${tr('esim_verified')} — ${profile.phone}`}
               </div>
             </div>

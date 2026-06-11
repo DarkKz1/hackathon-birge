@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
+import { Check, Clock, Hourglass, ShoppingBag, Undo2 } from 'lucide-react'
 import { useStore } from '../lib/store'
 import { BottomNav, Button, ProgressBar } from '../components/ui'
 import { kzt, pct, timeLeft } from '../lib/format'
@@ -23,7 +24,7 @@ export default function Groups() {
 
       {joined.length === 0 ? (
         <div className="px-5 mt-24 text-center rise">
-          <div className="text-[44px]">🛍</div>
+          <ShoppingBag size={40} className="mx-auto text-ink-3" strokeWidth={1.5} />
           <p className="mt-4 text-[15px] text-ink-3 max-w-[260px] mx-auto">{tr('groups_empty')}</p>
           <div className="mt-6 max-w-[240px] mx-auto">
             <Button variant="lime" onClick={() => nav('/feed')}>{tr('groups_empty_cta')}</Button>
@@ -50,7 +51,7 @@ export default function Groups() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between gap-2">
                       <span
-                        className={`text-[11px] font-extrabold px-2 py-0.5 rounded-full ${
+                        className={`inline-flex items-center gap-1 text-[11px] font-extrabold px-2 py-0.5 rounded-full ${
                           complete
                             ? 'bg-lime/25 text-lime-deep'
                             : expired
@@ -58,10 +59,11 @@ export default function Groups() {
                               : 'bg-amber-100 text-amber-700'
                         }`}
                       >
-                        {complete ? `✓ ${tr('status_complete')}` : expired ? `↩️ ${tr('status_expired')}` : `⏳ ${tr('status_filling')}`}
+                        {complete ? <Check size={11} strokeWidth={3} /> : expired ? <Undo2 size={11} strokeWidth={2.5} /> : <Hourglass size={11} strokeWidth={2.5} />}
+                        {complete ? tr('status_complete') : expired ? tr('status_expired') : tr('status_filling')}
                       </span>
                       {!complete && !expired && (
-                        <span className="text-[11px] font-bold text-coral whitespace-nowrap">⏱ {timeLeft(g.deadline, lang)}</span>
+                        <span className="inline-flex items-center gap-1 text-[11px] font-bold text-coral whitespace-nowrap"><Clock size={11} /> {timeLeft(g.deadline, lang)}</span>
                       )}
                     </div>
                     <div className="mt-1.5 text-[13px] font-semibold leading-snug line-clamp-1">{p.title}</div>

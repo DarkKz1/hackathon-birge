@@ -130,7 +130,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       known.add(k)
       setServerJoins((prev) => (prev.some((r) => joinKey(r) === k) ? prev : [...prev, row]))
       if (row.clientId !== CLIENT_ID && !row.clientId.startsWith(`${CLIENT_ID}-`)) {
-        toast(`${row.name} (${row.city}) ${t('toast_joined_other', profile.lang)}`, '⚡')
+        toast(`${row.name} (${row.city}) ${t('toast_joined_other', profile.lang)}`, 'zap')
       }
     })
     return unsub
@@ -181,7 +181,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     }
     addLocal(row)
     insertJoin(row)
-    toast(`${name} (${city}) ${t('toast_joined_other', profile.lang)}`, '⚡')
+    toast(`${name} (${city}) ${t('toast_joined_other', profile.lang)}`, 'zap')
   }
 
   const joinedProducts = () =>

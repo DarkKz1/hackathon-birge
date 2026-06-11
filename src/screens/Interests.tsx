@@ -1,16 +1,17 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Check, Dumbbell, Home, Shirt, Smartphone, Sparkles, type LucideIcon } from 'lucide-react'
 import { useStore } from '../lib/store'
 import { Button } from '../components/ui'
 import { CATEGORY_KEYS } from '../lib/recommend'
 import type { Category } from '../lib/types'
 
-const EMOJI: Record<Category, string> = {
-  electronics: '📱',
-  beauty: '✨',
-  home: '🏠',
-  fashion: '👗',
-  sport: '🏋️',
+const ICONS: Record<Category, LucideIcon> = {
+  electronics: Smartphone,
+  beauty: Sparkles,
+  home: Home,
+  fashion: Shirt,
+  sport: Dumbbell,
 }
 
 export default function Interests() {
@@ -36,8 +37,9 @@ export default function Interests() {
       <p className="mt-2 text-[14px] text-ink-3 rise rise-1">{tr('interests_sub')}</p>
 
       <div className="mt-8 grid grid-cols-2 gap-3">
-        {(Object.keys(EMOJI) as Category[]).map((c, i) => {
+        {(Object.keys(ICONS) as Category[]).map((c, i) => {
           const active = sel.includes(c)
+          const Icon = ICONS[c]
           return (
             <button
               key={c}
@@ -47,12 +49,10 @@ export default function Interests() {
               }`}
               style={{ animationDelay: `${i * 60}ms` }}
             >
-              <div className="text-[30px]">{EMOJI[c]}</div>
+              <Icon size={26} strokeWidth={1.8} className={active ? 'text-lime' : 'text-ink-2'} />
               <div className="mt-3 font-bold text-[15px] leading-tight">{tr(CATEGORY_KEYS[c])}</div>
               <div className={`mt-2 w-6 h-6 rounded-full flex items-center justify-center ${active ? 'bg-lime' : 'bg-line'}`}>
-                {active && (
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0d0f12" strokeWidth="3.5" strokeLinecap="round"><path d="M5 13l4 4L19 7" /></svg>
-                )}
+                {active && <Check size={13} strokeWidth={3.5} className="text-ink" />}
               </div>
             </button>
           )

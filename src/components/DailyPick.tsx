@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Sparkles } from 'lucide-react'
 import { catalog, useStore } from '../lib/store'
 import type { Reco } from '../lib/types'
 import { kzt, pct } from '../lib/format'
@@ -22,7 +23,6 @@ export default function DailyPick({ recos }: { recos: Reco[] }) {
       const cached = localStorage.getItem(cacheKey)
       if (cached) {
         const parsed = JSON.parse(cached) as PickData
-        // перепроверяем id по текущему каталогу — кэш мог пережить смену каталога
         parsed.picks = (parsed.picks ?? []).filter((x) => byId.has(x.id))
         if (parsed.intro && parsed.picks.length > 0) {
           setData(parsed)
@@ -30,17 +30,22 @@ export default function DailyPick({ recos }: { recos: Reco[] }) {
         }
       }
     } catch {
-      /* битый кэш — игнорируем и генерируем заново */
+      /* битый кэш — генерируем заново */
     }
 
     const fallback = (): PickData => ({
       intro: profile.name
         ? tr('pick_fallback_intro').replace('{name}', profile.name)
         : tr('pick_fallback_intro').replace('{name}, ', '').replace('{name}', ''),
-      picks: recos.slice(0, 3).map((r) => ({
-        id: r.product.id,
-        blurb: `${tr('pick_fallback_blurb')} ${kzt(r.product.retailKzt - r.product.tiers[0].priceKzt)}`,
-      })),
+      picks: recos.slice(0, 3).map((r, i) => {
+        const p = r.product
+        const blurbs = [
+          `${tr('pick_fb_save')} ${kzt(p.retailKzt - p.tiers[0].priceKzt)}`,
+          `${tr('pick_fb_left')}: ${Math.max(1, p.tiers[0].min - membersOf(p))}`,
+          `${tr('pick_fb_city')} ${profile.city}`,
+        ]
+        return { id: p.id, blurb: blurbs[i % 3] }
+      }),
       source: 'local',
     })
 
@@ -55,7 +60,7 @@ export default function DailyPick({ recos }: { recos: Reco[] }) {
     }))
 
     const ctl = new AbortController()
-    const timer = setTimeout(() => ctl.abort(), 6000)
+    const timer = setTimeout(() => ctl.abort(), 12000)
     fetch('/api/pick', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -71,7 +76,7 @@ export default function DailyPick({ recos }: { recos: Reco[] }) {
         if (picked.picks.length === 0) throw new Error('no valid picks')
         try {
           localStorage.setItem(cacheKey, JSON.stringify(picked))
-        } catch { /* quota — живём без кэша */ }
+        } catch { /* quota */ }
         setData(picked)
       })
       .catch(() => setData(fallback()))
@@ -83,29 +88,31 @@ export default function DailyPick({ recos }: { recos: Reco[] }) {
   if (!data) return null
 
   return (
-    <div className="mx-5 mt-5 rise rounded-3xl bg-gradient-to-br from-violet to-[#4a3dd1] text-white p-5">
-      <div className="flex items-center gap-2">
-        <span className="text-[16px]">✨</span>
-        <h2 className="font-bold text-[14px]">{tr('pick_title')}</h2>
+    <section className="px-5 mt-7 rise">
+      <div className="flex items-center gap-1.5">
+        <Sparkles size={15} className="text-violet" />
+        <h2 className="font-bold text-[15px]">{tr('pick_title')}</h2>
       </div>
-      <p className="mt-2 text-[13px] leading-snug text-white/85">{data.intro}</p>
-      <div className="mt-3 space-y-2">
+      <p className="mt-1 text-[13px] leading-snug text-ink-2 line-clamp-2">{data.intro}</p>
+
+      <div className="mt-3 bg-card border border-line rounded-3xl divide-y divide-line overflow-hidden">
         {data.picks.map(({ id, blurb }) => {
           const p = byId.get(id)!
           return (
-            <Link key={id} to={`/p/${id}`} className="flex gap-3 items-center bg-white/10 rounded-2xl p-2.5 active:scale-[0.98] transition-transform">
-              <img src={p.image} alt="" className="w-12 h-12 object-contain rounded-xl bg-white shrink-0" loading="lazy" />
-              <div className="min-w-0">
-                <div className="text-[12px] font-semibold line-clamp-1">{p.title}</div>
-                <div className="text-[11px] text-white/70 line-clamp-2 leading-snug">{blurb}</div>
-                <div className="text-[12px] font-extrabold mt-0.5">
-                  {kzt(p.tiers[0].priceKzt)} <span className="text-[10px] font-bold text-lime">−{pct(p.retailKzt, p.tiers[0].priceKzt)}%</span>
-                </div>
+            <Link key={id} to={`/p/${id}`} className="flex gap-3 items-center p-3 active:bg-paper transition-colors">
+              <img src={p.image} alt="" className="w-12 h-12 object-contain rounded-xl bg-white shrink-0 border border-line" loading="lazy" />
+              <div className="min-w-0 flex-1">
+                <div className="text-[13px] font-semibold line-clamp-1">{p.title}</div>
+                <div className="text-[12px] text-ink-3 line-clamp-1 leading-snug mt-0.5">{blurb}</div>
+              </div>
+              <div className="text-right shrink-0">
+                <div className="text-[13px] font-extrabold">{kzt(p.tiers[0].priceKzt)}</div>
+                <div className="text-[11px] font-bold text-coral">−{pct(p.retailKzt, p.tiers[0].priceKzt)}%</div>
               </div>
             </Link>
           )
         })}
       </div>
-    </div>
+    </section>
   )
 }
